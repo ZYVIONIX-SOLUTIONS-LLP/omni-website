@@ -105,7 +105,7 @@ export default function Home() {
         
         {/* Video background */}
         <video
-          src="/video/remove_this_icon_from_the_vide.mp4"
+          src="/video/I_want_a_animation_just_like_t.mp4"
           autoPlay
           loop
           muted
