@@ -44,7 +44,7 @@ const INFO = [
   {
     icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
     label: "Working Hours",
-    value: "Mon – Fri: 8:00 AM – 6:00 PM",
+    value: "Mon – Fri: 9:00 AM – 6:00 PM",
     sub: "Sunday: Emergency Only",
     href: "#",
   },
@@ -70,7 +70,7 @@ export default function ContactPage() {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }}>
             <div className="overline mb-4">Contact</div>
             <div className="grid lg:grid-cols-2 gap-6 items-end">
-              <h1 className="section-heading">Let's Connect<br />We're Here to Help</h1>
+              <h1 className="section-heading">Let's <span style={{ color: "#C8F400" }}>Connect</span><br />We're Here to Help</h1>
               <p className="body-text max-w-sm">Have a question or need assistance? Get in touch with our team — we're always ready to help.</p>
             </div>
           </motion.div>

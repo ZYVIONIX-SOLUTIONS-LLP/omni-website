@@ -37,8 +37,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2.5 mb-5 group w-fit">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform group-hover:scale-110" style={{ background: "#C8F400" }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#111111"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+              <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 border border-white/10 bg-black">
+                <img src="/logo.jpg" alt="Omni Electrics Logo" className="w-full h-full object-cover scale-105" />
               </div>
               <div className="leading-none">
                 <div className="font-extrabold text-sm tracking-tight text-white">Omni Electrics</div>
@@ -109,29 +109,51 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Info */}
           <div>
-            <h4 className="text-[0.65rem] font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(255,255,255,0.28)" }}>Stay Updated</h4>
-            <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.4)", lineHeight: 1.65 }}>
-              Subscribe to our newsletter for tips and updates.
-            </p>
-            <form onSubmit={e => e.preventDefault()} className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your Email Address"
-                className="flex-1 min-w-0 px-3 py-2.5 text-xs rounded-lg outline-none"
-                style={{ background: "rgba(255,255,255,0.07)", color: "#fff", border: "1px solid rgba(255,255,255,0.12)" }}
-                onFocus={e => { (e.currentTarget as HTMLElement).style.borderColor = "#C8F400"; }}
-                onBlur={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)"; }}
-              />
-              <button type="submit"
-                className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform hover:scale-110"
-                style={{ background: "#C8F400", color: "#11" }}
-                aria-label="Subscribe"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </button>
-            </form>
+            <h4 className="text-[0.65rem] font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(255,255,255,0.28)" }}>Contact Info</h4>
+            <ul className="space-y-3.5 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <li className="flex items-start gap-2.5">
+                <svg className="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <a 
+                  href="https://www.google.com/maps/place/omni+electrics/@11.2723973,75.782116,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba65f0070b0a4ad:0x1caa15919070f789!8m2!3d11.2723973!4d75.7846909!16s%2Fg%2F11x6mvp68m"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-[#C8F400]"
+                >
+                  5/778, Rarichan Rd,<br />
+                  Nadakkave, Kozhikode,<br />
+                  Kerala 673006
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <svg className="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <a href="tel:9349102611" className="transition-colors hover:text-[#C8F400]">
+                  93491 02611
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <svg className="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <a href="mailto:omnielectricscalicut@gmail.com" className="transition-colors hover:text-[#C8F400] break-all">
+                  omnielectricscalicut@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <svg className="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+              </li>
+            </ul>
           </div>
         </div>
 

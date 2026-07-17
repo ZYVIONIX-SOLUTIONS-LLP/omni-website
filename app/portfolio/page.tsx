@@ -102,7 +102,7 @@ export default function PortfolioPage() {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }}>
             <div className="overline mb-4">Our Projects</div>
             <div className="grid lg:grid-cols-2 gap-6 items-end">
-              <h1 className="section-heading">Delivering Power<br />Across Every Project</h1>
+              <h1 className="section-heading">Delivering <span style={{ color: "#C8F400" }}>Power</span><br />Across Every Project</h1>
               <p className="body-text max-w-sm">Explore some of our most recent work that reflects our commitment to quality and excellence.</p>
             </div>
           </motion.div>

@@ -39,13 +39,12 @@ function FadeUp({ children, delay = 0, className = "" }: { children: React.React
   );
 }
 
-function Accordion({ title, body, open: defaultOpen = false }: { title: string; body: string; open?: boolean }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+function Accordion({ title, body, isOpen, onToggle }: { title: string; body: string; isOpen: boolean; onToggle: () => void }) {
   return (
     <div className="rounded-2xl overflow-hidden transition-all duration-300"
       style={{ border: `1.5px solid ${isOpen ? "#C8F400" : "#e5e7eb"}` }}
     >
-      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between px-5 py-4 text-left">
+      <button onClick={onToggle} className="w-full flex items-center justify-between px-5 py-4 text-left">
         <span className="font-bold text-sm" style={{ color: "#111111" }}>{title}</span>
         <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200"
           style={{ background: isOpen ? "#C8F400" : "#f3f4f6" }}
@@ -80,6 +79,7 @@ const VALUES = [
 export default function AboutPage() {
   const sRef = useRef<HTMLElement>(null);
   const sIv  = useInView(sRef as React.RefObject<Element>, { once: true });
+  const [activeAccordion, setActiveAccordion] = useState<number>(0);
 
   return (
     <main className="bg-white min-h-screen">
@@ -90,7 +90,7 @@ export default function AboutPage() {
         <div className="site-container py-14 lg:py-20">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }} className="max-w-xl">
             <div className="overline mb-4">About Us</div>
-            <h1 className="section-heading mb-5">Powering Spaces<br />Empowering Lives</h1>
+            <h1 className="section-heading mb-5">Powering Spaces<br /><span style={{ color: "#C8F400" }}>Empowering</span> Lives</h1>
             <p className="body-text">Over a decade of delivering safe, reliable, and innovative electrical solutions.</p>
           </motion.div>
         </div>
@@ -107,7 +107,14 @@ export default function AboutPage() {
                   className="relative w-full overflow-hidden"
                   style={{ aspectRatio: "3/4", maxHeight: "560px", borderRadius: "50% 30% 40% 40%/30% 50% 35% 55%", background: "#e5e7eb" }}
                 >
-                  <Image src="/project-hv.png" alt="Omni Electrics team" fill className="object-cover" sizes="50vw" />
+                  <video
+                    src="/video/about-section/Electrician_performing_maintenan…_202607171420.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                 </div>
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
@@ -117,7 +124,7 @@ export default function AboutPage() {
                 >
                   <div className="font-extrabold leading-none mb-1"
                     style={{ fontSize: "2.25rem", color: "#C8F400", letterSpacing: "-0.04em", fontFamily: "var(--font-outfit),system-ui,sans-serif" }}>
-                    15+
+                    20+
                   </div>
                   <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Years of Excellence</div>
                 </motion.div>
@@ -133,9 +140,24 @@ export default function AboutPage() {
                 <p className="body-text mb-8">Our certified team handles everything from residential wiring to high-voltage substations, solar EPC, and industrial automation, maintaining the highest quality and safety benchmarks.</p>
               </FadeUp>
               <FadeUp delay={0.1} className="flex flex-col gap-3 mb-8">
-                <Accordion title="Our Mission" body="To deliver safe, reliable, and innovative electrical solutions that empower communities, businesses, and industries while upholding the highest safety and quality standards." open />
-                <Accordion title="Our Vision" body="To be the most trusted electrical solutions provider in the region, driving sustainable energy practices and technological innovation in every project." />
-                <Accordion title="Our Values" body="Safety, Integrity, Innovation, Teamwork, and Customer Excellence — these core values guide every decision we make and every project we deliver." />
+                <Accordion 
+                  title="Our Mission" 
+                  body="To deliver safe, reliable, and innovative electrical solutions that empower communities, businesses, and industries while upholding the highest safety and quality standards." 
+                  isOpen={activeAccordion === 0}
+                  onToggle={() => setActiveAccordion(0)}
+                />
+                <Accordion 
+                  title="Our Vision" 
+                  body="To be the most trusted electrical solutions provider in the region, driving sustainable energy practices and technological innovation in every project." 
+                  isOpen={activeAccordion === 1}
+                  onToggle={() => setActiveAccordion(1)}
+                />
+                <Accordion 
+                  title="Our Values" 
+                  body="Safety, Integrity, Innovation, Teamwork, and Customer Excellence — these core values guide every decision we make and every project we deliver." 
+                  isOpen={activeAccordion === 2}
+                  onToggle={() => setActiveAccordion(2)}
+                />
               </FadeUp>
               <FadeUp delay={0.15}>
                 <Link href="/contact" className="btn-dark">

@@ -40,12 +40,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="Omni Electrics">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
-              style={{ background: "#C8F400" }}
+              className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center transition-transform duration-200 group-hover:scale-110 border border-gray-200/60 bg-black"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#111111">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-              </svg>
+              <img src="/logo.jpg" alt="Omni Electrics Logo" className="w-full h-full object-cover scale-105" />
             </div>
             <div className="leading-none">
               <div

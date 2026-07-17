@@ -15,7 +15,7 @@ function FadeUp({ children, delay = 0, className = "" }: { children: React.React
       initial={{ opacity: 0, y: 28 }}
       animate={iv ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
+    > 
       {children}
     </motion.div>
   );
@@ -31,12 +31,82 @@ const SERVICES = [
 ];
 
 const STEPS = [
-  { n: "01", title: "Consultation",    desc: "Understanding your requirements, site conditions, and project goals." },
-  { n: "02", title: "Site Inspection", desc: "Detailed site survey and assessment of existing infrastructure." },
-  { n: "03", title: "Planning",        desc: "Engineering drawings, load calculations, and material procurement." },
-  { n: "04", title: "Installation",    desc: "Certified technicians execute with precision and safety protocols." },
-  { n: "05", title: "Testing",         desc: "Full system commissioning and safety inspections." },
-  { n: "06", title: "Maintenance",     desc: "Ongoing support and preventive maintenance for long-term reliability." },
+  { 
+    n: "01", 
+    title: "Consultation", 
+    desc: "Understanding your requirements, site conditions, and project goals.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        <path d="M8 7h8" />
+        <path d="M8 11h5" />
+      </svg>
+    ),
+    bg: "dots"
+  },
+  { 
+    n: "02", 
+    title: "Site Inspection", 
+    desc: "Detailed site survey and assessment of existing infrastructure.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+        <path d="M9 14l2 2 4-4" />
+      </svg>
+    ),
+    bg: "lines"
+  },
+  { 
+    n: "03", 
+    title: "Planning", 
+    desc: "Engineering drawings, load calculations, and material procurement.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+    bg: "dots"
+  },
+  { 
+    n: "04", 
+    title: "Installation", 
+    desc: "Certified technicians execute with precision and safety protocols.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+        <path d="M6 8a6 6 0 0 1 12 0" />
+        <line x1="12" y1="2" x2="12" y2="4" />
+      </svg>
+    ),
+    bg: "lines"
+  },
+  { 
+    n: "05", 
+    title: "Testing", 
+    desc: "Full system commissioning and safety inspections.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M13 8l-3 4h4l-3 4" />
+      </svg>
+    ),
+    bg: "lines"
+  },
+  { 
+    n: "06", 
+    title: "Maintenance", 
+    desc: "Ongoing support and preventive maintenance for long-term reliability.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+    ),
+    bg: "dots"
+  },
 ];
 
 export default function ServicesPage() {
@@ -45,45 +115,50 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* ═══ HEADER ══════════════════════════════════════ */}
-      <div style={{ paddingTop: "68px", background: "#f9fafb" }}>
-        <div className="site-container py-14 lg:py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left text */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="overline mb-5">Our Services</div>
-              <h1 className="section-heading mb-5">
-                Smart Solutions<br />For Every Need
-              </h1>
-              <p className="body-text mb-8 max-w-md">
-                We provide end-to-end electrical solutions with a focus on safety, efficiency, and innovation.
-              </p>
-              <Link href="/contact" className="btn-dark">
-                Get a Free Quote
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </motion.div>
-
-            {/* Right blob image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block"
-            >
-              <div
-                className="relative w-full overflow-hidden"
-                style={{ aspectRatio: "4/3", borderRadius: "50% 30% 40% 40%/30% 50% 30% 50%", background: "#e5e7eb" }}
+      <div style={{ paddingTop: "68px", background: "#ffffff" }}>
+        <div className="relative py-14 lg:py-0 lg:h-[580px] flex items-center overflow-hidden">
+          <div className="site-container w-full">
+            <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
+              {/* Left text */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-2xl lg:max-w-3xl"
               >
-                <Image src="/project-hv.png" alt="Electrical services" fill className="object-cover" sizes="50vw" priority />
-              </div>
-            </motion.div>
+                <div className="overline mb-5">Our Services</div>
+                <h1 className="section-heading mb-5">
+                  Smart <span style={{ color: "#C8F400" }}>Solutions</span> For Every Need
+                </h1>
+                <p className="body-text mb-8 max-w-md">
+                  We provide end-to-end electrical solutions with a focus on safety, efficiency, and innovation.
+                </p>
+                <Link href="/contact" className="btn-dark">
+                  Get a Free Quote
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </motion.div>
+            </div>
           </div>
+
+          {/* Right image - positioned absolutely to touch the right screen edge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block absolute -right-12 top-0 bottom-0 w-[52vw] h-full"
+          >
+            <Image 
+              src="/services-hero-v4.png" 
+              alt="Modern villa electrical services" 
+              fill 
+              className="object-contain object-right scale-105 origin-right" 
+              sizes="50vw" 
+              priority 
+            />
+          </motion.div>
         </div>
       </div>
 
@@ -167,24 +242,79 @@ export default function ServicesPage() {
             <div className="overline mb-4 justify-center">Our Process</div>
             <h2 className="section-heading">How We Work</h2>
           </FadeUp>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {STEPS.map((step, i) => (
               <FadeUp key={step.n} delay={i * 0.07}>
                 <div
-                  className="relative bg-white p-6 rounded-2xl transition-all duration-250 group cursor-pointer"
-                  style={{ border: "1.5px solid #e5e7eb" }}
-                  onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#C8F400"; el.style.transform = "translateY(-4px)"; el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)"; }}
-                  onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#e5e7eb"; el.style.transform = ""; el.style.boxShadow = ""; }}
+                  className="relative bg-white p-6 rounded-2xl transition-all duration-250 group cursor-pointer border-l-[4px] border-l-[#C8F400] flex gap-5 items-start overflow-hidden shadow-sm"
+                  style={{ borderTop: "1.5px solid #e5e7eb", borderRight: "1.5px solid #e5e7eb", borderBottom: "1.5px solid #e5e7eb" }}
+                  onMouseEnter={(e) => { 
+                    const el = e.currentTarget as HTMLElement; 
+                    el.style.borderTopColor = "#C8F400"; 
+                    el.style.borderRightColor = "#C8F400"; 
+                    el.style.borderBottomColor = "#C8F400"; 
+                    el.style.transform = "translateY(-4px)"; 
+                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)"; 
+                  }}
+                  onMouseLeave={(e) => { 
+                    const el = e.currentTarget as HTMLElement; 
+                    el.style.borderTopColor = "#e5e7eb"; 
+                    el.style.borderRightColor = "#e5e7eb"; 
+                    el.style.borderBottomColor = "#e5e7eb"; 
+                    el.style.transform = ""; 
+                    el.style.boxShadow = ""; 
+                  }}
                 >
-                  <div className="absolute top-4 right-5 font-black text-5xl leading-none select-none" style={{ color: "rgba(200,244,0,0.18)", letterSpacing: "-0.05em" }}>{step.n}</div>
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center font-black text-sm mb-4"
-                    style={{ background: "#C8F400", color: "#111111" }}
-                  >
-                    {step.n}
+                  {/* Faint large step number on the top-right */}
+                  <div className="absolute top-4 right-5 font-black text-5xl leading-none select-none text-[#C8F400]/10" style={{ letterSpacing: "-0.05em" }}>{step.n}</div>
+
+                  {/* Background patterns */}
+                  {step.bg === "dots" ? (
+                    <svg className="absolute bottom-2 right-2 opacity-[0.08] pointer-events-none" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                      <circle cx="5" cy="5" r="2" fill="#C8F400" />
+                      <circle cx="15" cy="5" r="2" fill="#C8F400" />
+                      <circle cx="25" cy="5" r="2" fill="#C8F400" />
+                      <circle cx="35" cy="5" r="2" fill="#C8F400" />
+                      <circle cx="5" cy="15" r="2" fill="#C8F400" />
+                      <circle cx="15" cy="15" r="2" fill="#C8F400" />
+                      <circle cx="25" cy="15" r="2" fill="#C8F400" />
+                      <circle cx="35" cy="15" r="2" fill="#C8F400" />
+                      <circle cx="5" cy="25" r="2" fill="#C8F400" />
+                      <circle cx="15" cy="25" r="2" fill="#C8F400" />
+                      <circle cx="25" cy="25" r="2" fill="#C8F400" />
+                      <circle cx="35" cy="25" r="2" fill="#C8F400" />
+                      <circle cx="5" cy="35" r="2" fill="#C8F400" />
+                      <circle cx="15" cy="35" r="2" fill="#C8F400" />
+                      <circle cx="25" cy="35" r="2" fill="#C8F400" />
+                      <circle cx="35" cy="35" r="2" fill="#C8F400" />
+                    </svg>
+                  ) : (
+                    <svg className="absolute -bottom-6 -right-6 opacity-[0.08] pointer-events-none" width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="#C8F400" strokeWidth="2.5">
+                      <circle cx="100" cy="100" r="80" />
+                      <circle cx="100" cy="100" r="60" />
+                      <circle cx="100" cy="100" r="40" />
+                      <circle cx="100" cy="100" r="20" />
+                    </svg>
+                  )}
+
+                  {/* Left Column: Small step badge + Large circular icon */}
+                  <div className="flex flex-col gap-4 items-start shrink-0 relative z-10">
+                    {/* Small number badge */}
+                    <div className="w-8 h-5 rounded-[4px] bg-[#C8F400] flex items-center justify-center font-bold text-[0.65rem] text-[#111111] leading-none">
+                      {step.n}
+                    </div>
+
+                    {/* Circular Icon Wrapper */}
+                    <div className="w-14 h-14 rounded-full bg-[#f4fadc] flex items-center justify-center transition-colors duration-300 group-hover:bg-[#C8F400]/20">
+                      {step.icon}
+                    </div>
                   </div>
-                  <p className="card-title mb-2">{step.title}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "#9ca3af" }}>{step.desc}</p>
+
+                  {/* Right Column: Text Content */}
+                  <div className="flex-1 pt-1.5 relative z-10">
+                    <p className="font-extrabold text-sm text-[#111111] mb-1.5 group-hover:text-accent-dim transition-colors duration-200">{step.title}</p>
+                    <p className="text-[0.7rem] leading-relaxed text-gray-500 max-w-[190px]">{step.desc}</p>
+                  </div>
                 </div>
               </FadeUp>
             ))}
