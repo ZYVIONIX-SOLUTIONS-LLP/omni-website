@@ -37,7 +37,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2.5 mb-5 group w-fit">
-              <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 border border-white/10 bg-black">
+              <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center shrink-0 border border-white/10 bg-black logo-shock">
                 <img src="/logo.jpg" alt="Omni Electrics Logo" className="w-full h-full object-cover scale-105" />
               </div>
               <div className="leading-none">

@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
 import ElectricCursor from "@/components/ElectricCursor";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,11 +40,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white overflow-x-hidden" style={{ color: "#111111" }}>
-        {children}
-        <WhatsAppBtn />
-        <ElectricCursor />
+    <html lang="en" className={`${inter.variable} ${outfit.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col overflow-x-hidden" suppressHydrationWarning>
+        <ThemeProvider>
+          {children}
+          <WhatsAppBtn />
+          <ElectricCursor />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -97,14 +97,43 @@ export default function PortfolioPage() {
       <Navbar />
 
       {/* Header */}
-      <div style={{ paddingTop: "68px", background: "#f9fafb" }}>
-        <div className="site-container py-14 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }}>
-            <div className="overline mb-4">Our Projects</div>
-            <div className="grid lg:grid-cols-2 gap-6 items-end">
-              <h1 className="section-heading">Delivering <span style={{ color: "#C8F400" }}>Power</span><br />Across Every Project</h1>
-              <p className="body-text max-w-sm">Explore some of our most recent work that reflects our commitment to quality and excellence.</p>
+      <div style={{ paddingTop: "68px", background: "#ffffff" }}>
+        <div className="relative py-14 lg:py-0 lg:h-[580px] flex items-center overflow-hidden">
+          <div className="site-container w-full">
+            <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
+              {/* Left text */}
+              <motion.div 
+                initial={{ opacity: 0, y: 24 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-2xl lg:max-w-3xl"
+              >
+                <div className="overline mb-5">Our Projects</div>
+                <h1 className="section-heading mb-5">
+                  Delivering <span style={{ color: "#C8F400" }}>Power</span>Across Every Project
+                </h1>
+                <p className="body-text mb-8 max-w-md">
+                  Explore some of our most recent work that reflects our commitment to quality and excellence.
+                </p>
+              </motion.div>
             </div>
+          </div>
+
+          {/* Right image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block absolute -right-12 top-0 bottom-0 w-[52vw] h-full"
+          >
+            <Image 
+              src="/image/service-page/project-page-hero.png" 
+              alt="Omni Electrics projects portfolio" 
+              fill 
+              className="object-contain object-right scale-105 origin-right" 
+              sizes="50vw" 
+              priority 
+            />
           </motion.div>
         </div>
       </div>

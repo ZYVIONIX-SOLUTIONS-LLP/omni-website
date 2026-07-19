@@ -65,6 +65,18 @@ const STATS = [
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  const SLIDES = [
+    "/slide-1.jpg", 
+    "/slide-2.jpg", 
+    "/slide-3.jpg", 
+    "/slide-4.jpg",
+    "/slide-5.jpg",
+    "/slide-6.jpg",
+    "/slide-7.jpg",
+    "/slide-8.jpg"
+  ];
 
   const FEATURES = [
     {
@@ -93,6 +105,13 @@ export default function Home() {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % FEATURES.length);
     }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % SLIDES.length);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -185,7 +204,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TRUST.map((t, i) => (
               <FadeUp key={t.title} delay={i * 0.07}>
-                <div className="flex items-start gap-3.5">
+                <div className="flex items-start gap-3.5 group">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{ background: "rgba(200,244,0,0.12)" }}
@@ -233,9 +252,9 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               {SERVICES.map((s, i) => (
                 <FadeUp key={s.title} delay={0.06 + i * 0.07}>
-                  <div className="service-card h-full">
+                  <div className="service-card h-full group">
                     <div className="icon-wrap mb-4">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s.icon} />
                       </svg>
                     </div>
@@ -299,7 +318,7 @@ export default function Home() {
                       fontFamily: "var(--font-outfit),system-ui,sans-serif",
                     }}
                   >
-                    Have an 
+                    Have an Electrical Project in Mind?
                   </h2>
                   <p className="text-sm mb-8 max-w-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>
                     Let's turn your ideas into powerful solutions.
@@ -312,22 +331,31 @@ export default function Home() {
                   </Link>
                 </div>
 
-                {/* Person image */}
-                <div className="relative hidden lg:block w-72 xl:w-80 self-end">
-                  <div className="relative" style={{ height: "300px" }}>
-                    <Image
-                      src="/blueprint.png"
-                      alt="Electrical expert"
-                      fill
-                      className="object-cover object-center"
-                      style={{ borderRadius: "20px 20px 0 0" }}
-                      sizes="320px"
-                    />
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{ background: "linear-gradient(to top, rgba(17,17,17,0.5) 0%, transparent 50%)", borderRadius: "20px 20px 0 0" }}
-                    />
-                  </div>
+                {/* Person image slideshow */}
+                <div className="relative hidden lg:block w-72 xl:w-80 self-end overflow-hidden" style={{ height: "300px", borderRadius: "20px 20px 0 0" }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={slideIndex}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6 }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      <Image
+                        src={SLIDES[slideIndex]}
+                        alt="Electrical expert"
+                        fill
+                        className="object-cover object-center"
+                        style={{ borderRadius: "20px 20px 0 0" }}
+                        sizes="320px"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(to top, rgba(17,17,17,0.5) 0%, transparent 50%)", borderRadius: "20px 20px 0 0" }}
+                  />
                 </div>
               </div>
             </div>

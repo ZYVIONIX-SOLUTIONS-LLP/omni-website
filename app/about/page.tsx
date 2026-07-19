@@ -199,7 +199,7 @@ export default function AboutPage() {
               <FadeUp key={v.title} delay={i * 0.08}>
                 <div className="service-card text-center group">
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-colors duration-200 group-hover:bg-[#C8F400]" style={{ background: "#f3f4f6" }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
+                    <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
                   </div>
                   <p className="card-title mb-3">{v.title}</p>
                   <p className="text-sm leading-relaxed" style={{ color: "#9ca3af" }}>{v.desc}</p>

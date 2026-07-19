@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -66,13 +67,42 @@ export default function ContactPage() {
 
       {/* Header */}
       <div style={{ paddingTop: "68px", background: "#f9fafb" }}>
-        <div className="site-container py-14 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }}>
-            <div className="overline mb-4">Contact</div>
-            <div className="grid lg:grid-cols-2 gap-6 items-end">
-              <h1 className="section-heading">Let's <span style={{ color: "#C8F400" }}>Connect</span><br />We're Here to Help</h1>
-              <p className="body-text max-w-sm">Have a question or need assistance? Get in touch with our team — we're always ready to help.</p>
+        <div className="relative py-14 lg:py-0 lg:h-[580px] flex items-center overflow-hidden">
+          <div className="site-container w-full">
+            <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
+              {/* Left text */}
+              <motion.div 
+                initial={{ opacity: 0, y: 24 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-2xl lg:max-w-3xl"
+              >
+                <div className="overline mb-5">Contact</div>
+                <h1 className="section-heading mb-5">
+                  Let's <span style={{ color: "#C8F400" }}>Connect</span><br />We're Here to Help
+                </h1>
+                <p className="body-text mb-8 max-w-md">
+                  Have a question or need assistance? Get in touch with our team — we're always ready to help.
+                </p>
+              </motion.div>
             </div>
+          </div>
+
+          {/* Right image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block absolute -right-12 top-0 bottom-0 w-[52vw] h-full"
+          >
+            <Image 
+              src="/image/contact-page/ChatGPT Image Jul 18, 2026, 05_58_40 PM.png" 
+              alt="Contact Omni Electrics" 
+              fill 
+              className="object-contain object-right scale-105 origin-right" 
+              sizes="50vw" 
+              priority 
+            />
           </motion.div>
         </div>
       </div>

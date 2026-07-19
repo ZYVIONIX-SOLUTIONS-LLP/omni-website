@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
@@ -151,7 +151,7 @@ export default function ServicesPage() {
             className="hidden lg:block absolute -right-12 top-0 bottom-0 w-[52vw] h-full"
           >
             <Image 
-              src="/services-hero-v4.png" 
+              src="/image/service-page/service-page-hero.png.png" 
               alt="Modern villa electrical services" 
               fill 
               className="object-contain object-right scale-105 origin-right" 
@@ -168,9 +168,9 @@ export default function ServicesPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((s, i) => (
               <FadeUp key={s.title} delay={i * 0.06}>
-                <div className="service-card h-full">
+                <div className="service-card h-full group">
                   <div className="icon-wrap mb-4">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d={s.icon} />
                     </svg>
                   </div>
@@ -244,77 +244,38 @@ export default function ServicesPage() {
           </FadeUp>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {STEPS.map((step, i) => (
-              <FadeUp key={step.n} delay={i * 0.07}>
-                <div
-                  className="relative bg-white p-6 rounded-2xl transition-all duration-250 group cursor-pointer border-l-[4px] border-l-[#C8F400] flex gap-5 items-start overflow-hidden shadow-sm"
-                  style={{ borderTop: "1.5px solid #e5e7eb", borderRight: "1.5px solid #e5e7eb", borderBottom: "1.5px solid #e5e7eb" }}
-                  onMouseEnter={(e) => { 
-                    const el = e.currentTarget as HTMLElement; 
-                    el.style.borderTopColor = "#C8F400"; 
-                    el.style.borderRightColor = "#C8F400"; 
-                    el.style.borderBottomColor = "#C8F400"; 
-                    el.style.transform = "translateY(-4px)"; 
-                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)"; 
-                  }}
-                  onMouseLeave={(e) => { 
-                    const el = e.currentTarget as HTMLElement; 
-                    el.style.borderTopColor = "#e5e7eb"; 
-                    el.style.borderRightColor = "#e5e7eb"; 
-                    el.style.borderBottomColor = "#e5e7eb"; 
-                    el.style.transform = ""; 
-                    el.style.boxShadow = ""; 
-                  }}
-                >
-                  {/* Faint large step number on the top-right */}
-                  <div className="absolute top-4 right-5 font-black text-5xl leading-none select-none text-[#C8F400]/10" style={{ letterSpacing: "-0.05em" }}>{step.n}</div>
-
-                  {/* Background patterns */}
-                  {step.bg === "dots" ? (
-                    <svg className="absolute bottom-2 right-2 opacity-[0.08] pointer-events-none" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                      <circle cx="5" cy="5" r="2" fill="#C8F400" />
-                      <circle cx="15" cy="5" r="2" fill="#C8F400" />
-                      <circle cx="25" cy="5" r="2" fill="#C8F400" />
-                      <circle cx="35" cy="5" r="2" fill="#C8F400" />
-                      <circle cx="5" cy="15" r="2" fill="#C8F400" />
-                      <circle cx="15" cy="15" r="2" fill="#C8F400" />
-                      <circle cx="25" cy="15" r="2" fill="#C8F400" />
-                      <circle cx="35" cy="15" r="2" fill="#C8F400" />
-                      <circle cx="5" cy="25" r="2" fill="#C8F400" />
-                      <circle cx="15" cy="25" r="2" fill="#C8F400" />
-                      <circle cx="25" cy="25" r="2" fill="#C8F400" />
-                      <circle cx="35" cy="25" r="2" fill="#C8F400" />
-                      <circle cx="5" cy="35" r="2" fill="#C8F400" />
-                      <circle cx="15" cy="35" r="2" fill="#C8F400" />
-                      <circle cx="25" cy="35" r="2" fill="#C8F400" />
-                      <circle cx="35" cy="35" r="2" fill="#C8F400" />
-                    </svg>
-                  ) : (
-                    <svg className="absolute -bottom-6 -right-6 opacity-[0.08] pointer-events-none" width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="#C8F400" strokeWidth="2.5">
-                      <circle cx="100" cy="100" r="80" />
-                      <circle cx="100" cy="100" r="60" />
-                      <circle cx="100" cy="100" r="40" />
-                      <circle cx="100" cy="100" r="20" />
-                    </svg>
-                  )}
-
-                  {/* Left Column: Small step badge + Large circular icon */}
-                  <div className="flex flex-col gap-4 items-start shrink-0 relative z-10">
-                    {/* Small number badge */}
-                    <div className="w-8 h-5 rounded-[4px] bg-[#C8F400] flex items-center justify-center font-bold text-[0.65rem] text-[#111111] leading-none">
+              <FadeUp key={step.n} delay={i * 0.06} className="w-full">
+                <div className="relative bg-white/60 backdrop-blur-md p-8 rounded-[24px] border border-white/80 hover:border-[#C8F400] hover:shadow-[0_20px_45px_rgba(200,244,0,0.06)] hover:-translate-y-1 transition-all duration-500 group cursor-pointer flex flex-col justify-between h-full min-h-[250px] overflow-hidden">
+                  
+                  {/* Top Row: step badge and faint number */}
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-bold font-mono tracking-widest text-[#b0d900] bg-[#C8F400]/10 px-3 py-1 rounded-full uppercase">
+                      Phase {step.n}
+                    </span>
+                    <span className="text-4xl font-black font-mono text-gray-300/40 select-none transition-colors duration-500 group-hover:text-[#C8F400]/30">
                       {step.n}
-                    </div>
-
-                    {/* Circular Icon Wrapper */}
-                    <div className="w-14 h-14 rounded-full bg-[#f4fadc] flex items-center justify-center transition-colors duration-300 group-hover:bg-[#C8F400]/20">
-                      {step.icon}
-                    </div>
+                    </span>
                   </div>
 
-                  {/* Right Column: Text Content */}
-                  <div className="flex-1 pt-1.5 relative z-10">
-                    <p className="font-extrabold text-sm text-[#111111] mb-1.5 group-hover:text-accent-dim transition-colors duration-200">{step.title}</p>
-                    <p className="text-[0.7rem] leading-relaxed text-gray-500 max-w-[190px]">{step.desc}</p>
+                  {/* Text Details */}
+                  <div className="mt-8 flex-grow">
+                    <h3 className="font-heading font-bold text-lg text-[#111111] mb-2.5 transition-colors duration-300 group-hover:text-[#b0d900]">
+                      {step.title}
+                    </h3>
+                    <p className="font-sans text-xs text-gray-500 leading-relaxed max-w-[220px]">
+                      {step.desc}
+                    </p>
                   </div>
+
+                  {/* Icon at bottom */}
+                  <div className="mt-6 flex justify-end">
+                    <div className="w-10 h-10 rounded-xl bg-white/40 border border-white/60 flex items-center justify-center transition-all duration-500 group-hover:bg-[#C8F400]/10 group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(200,244,0,0.1)]">
+                      {React.cloneElement(step.icon as React.ReactElement<any>, {
+                        className: "w-5 h-5 text-gray-600 transition-all duration-500 group-hover:text-[#b0d900] group-hover:rotate-[360deg] [stroke:currentColor]"
+                      })}
+                    </div>
+                  </div>
+                  
                 </div>
               </FadeUp>
             ))}
