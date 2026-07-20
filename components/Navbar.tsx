@@ -163,7 +163,7 @@ function ElectricSwitch() {
             bottom: "5px",
             borderRadius: "2px",
             transformOrigin: "center 50%",
-            transform: on ? "perspective(60px) rotateX(-18deg)" : "perspective(60px) rotateX(18deg)",
+            transform: on ? "perspective(60px) rotateX(18deg)" : "perspective(60px) rotateX(-18deg)",
             transition: "transform 0.18s cubic-bezier(0.34,1.3,0.64,1), background 0.3s, border-color 0.3s",
             background: on
               ? "linear-gradient(180deg, #2e2e2e 0%, #222 50%, #2a2a2a 100%)"
@@ -174,19 +174,32 @@ function ElectricSwitch() {
             border: on ? "1px solid #3a3a3a" : "1px solid #bbb",
             cursor: "pointer",
           }}>
-            {/* Indicator dot */}
+            {/* Theme Icon (Sun/Moon) on the switch button */}
             <div style={{
               position: "absolute",
               left: "50%",
-              top: on ? "30%" : "65%",
+              top: on ? "30%" : "70%",
               transform: "translate(-50%, -50%)",
-              width: "4px",
-              height: "4px",
-              borderRadius: "50%",
-              background: on ? "#C8F400" : "#bbb",
-              boxShadow: on ? "0 0 6px 2px rgba(200,244,0,0.8)" : "none",
-              transition: "top 0.18s, background 0.2s, box-shadow 0.2s",
-            }} />
+              width: "12px",
+              height: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "top 0.18s, color 0.2s, opacity 0.2s",
+              color: on ? "#C8F400" : "#666",
+            }}>
+              {on ? (
+                // Sun Icon (when Dark Mode is live)
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style={{ width: "100%", height: "100%", filter: "drop-shadow(0 0 3px rgba(200,244,0,0.6))" }}>
+                  <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM6.161 6.16a.75.75 0 0 1 1.06 0l1.59 1.59a.75.75 0 1 1-1.06 1.06l-1.59-1.59a.75.75 0 0 1 0-1.06Zm11.678 0a.75.75 0 0 1 0 1.06l-1.59 1.59a.75.75 0 1 1-1.06-1.06l1.59-1.59a.75.75 0 0 1 1.06 0ZM12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9ZM2.25 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1-.75-.75ZM18.75 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5h-2.25a.75.75 0 0 1-.75-.75ZM6.161 17.84a.75.75 0 0 1 0-1.06l1.59-1.59a.75.75 0 1 1 1.06 1.06l-1.59 1.59a.75.75 0 0 1-1.06 0Zm11.678 0a.75.75 0 0 1-1.06 0l-1.59-1.59a.75.75 0 1 1 1.06-1.06l1.59 1.59a.75.75 0 0 1 0 1.06ZM12 18.75a.75.75 0 0 1 .75.75V21.75a.75.75 0 0 1-1.5 0V19.5a.75.75 0 0 1 .75-.75Z" />
+                </svg>
+              ) : (
+                // Moon Icon (when Light Mode is live)
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style={{ width: "100%", height: "100%" }}>
+                  <path d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+              )}
+            </div>
           </div>
 
           {/* "I" top */}
@@ -233,7 +246,7 @@ function ElectricSwitch() {
           ${[0,1,2,3,4].map((i) => `
             @keyframes oe-home-spark-${i} {
               0%   { opacity: 1; transform: translate(-50%,-50%) translate(0px,0px) scale(1); }
-              100% { opacity: 0; transform: translate(-50%,-50%) translate(${Math.cos(i*72*Math.PI/180)*14}px, ${Math.sin(i*72*Math.PI/180)*14}px) scale(0.1); }
+              100% { opacity: 0; transform: translate(-50%,-50%) translate(${(Math.cos(i*72*Math.PI/180)*14).toFixed(4)}px, ${(Math.sin(i*72*Math.PI/180)*14).toFixed(4)}px) scale(0.1); }
             }
           `).join("")}
         `}</style>
@@ -337,27 +350,32 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Hamburger */}
-          <button
-            className="lg:hidden flex flex-col items-center justify-center gap-[5px] w-10 h-10"
-            onClick={() => setOpen(!open)}
-            aria-label={open ? "Close" : "Menu"}
-          >
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                className="block rounded-full transition-all duration-300 origin-center"
-                style={{
-                  width: "20px", height: "2px", background: isDark ? "#f0f0f0" : "#111111",
-                  opacity: i === 1 && open ? 0 : 1,
-                  transform:
-                    i === 0 && open ? "rotate(45deg) translate(5px, 5px)"
-                    : i === 2 && open ? "rotate(-45deg) translate(5px, -5px)"
-                    : "none",
-                }}
-              />
-            ))}
-          </button>
+          {/* Mobile Switch & Hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            <div style={{ transform: "scale(0.78)", transformOrigin: "right center" }}>
+              <ElectricSwitch />
+            </div>
+            <button
+              className="flex flex-col items-center justify-center gap-[5px] w-10 h-10"
+              onClick={() => setOpen(!open)}
+              aria-label={open ? "Close" : "Menu"}
+            >
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className="block rounded-full transition-all duration-300 origin-center"
+                  style={{
+                    width: "20px", height: "2px", background: isDark ? "#f0f0f0" : "#111111",
+                    opacity: i === 1 && open ? 0 : 1,
+                    transform:
+                      i === 0 && open ? "rotate(45deg) translate(5px, 5px)"
+                      : i === 2 && open ? "rotate(-45deg) translate(5px, -5px)"
+                      : "none",
+                  }}
+                />
+              ))}
+            </button>
+          </div>
         </div>
       </div>
 

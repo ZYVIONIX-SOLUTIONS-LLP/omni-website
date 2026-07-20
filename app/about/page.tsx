@@ -87,11 +87,33 @@ export default function AboutPage() {
 
       {/* Header */}
       <div style={{ paddingTop: "68px", background: "#f9fafb" }}>
-        <div className="site-container py-14 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }} className="max-w-xl">
-            <div className="overline mb-4">About Us</div>
-            <h1 className="section-heading mb-5">Powering Spaces<br /><span style={{ color: "#C8F400" }}>Empowering</span> Lives</h1>
-            <p className="body-text">Over a decade of delivering safe, reliable, and innovative electrical solutions.</p>
+        <div className="relative py-14 lg:py-0 lg:h-[580px] flex items-center overflow-hidden">
+          <div className="site-container w-full">
+            <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
+              <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }} className="max-w-2xl lg:max-w-3xl">
+                <div className="overline mb-4">About Us</div>
+                <h1 className="section-heading mb-5">Powering Spaces <span style={{ color: "#C8F400" }}>Empowering</span><br /> Lives</h1>
+                <p className="body-text">Over a decade of delivering safe, reliable, and innovative electrical solutions.</p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block absolute -right-12 top-0 bottom-0 w-[52vw] h-full"
+            style={{ filter: "drop-shadow(0 25px 25px rgba(0, 0, 0, 0.12))" }}
+          >
+            <Image
+              src="/image/about-page/ChatGPT Image Jul 19, 2026, 06_06_55 PM.png"
+              alt="Omni Electrics Hero"
+              fill
+              sizes="50vw"
+              className="object-contain object-right scale-105 origin-right"
+              priority
+            />
           </motion.div>
         </div>
       </div>

@@ -28,10 +28,9 @@ export default function Footer() {
       <div className="site-container pt-14 pb-8">
         {/* Top grid */}
         <div
-          className="grid gap-10 pb-12 mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_1fr_1.4fr] gap-10 pb-12 mb-8"
           style={{
             borderBottom: "1px solid rgba(255,255,255,0.08)",
-            gridTemplateColumns: "2fr 1fr 1fr 1fr 1.4fr",
           }}
         >
           {/* Brand */}

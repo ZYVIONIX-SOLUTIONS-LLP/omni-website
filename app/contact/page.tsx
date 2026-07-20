@@ -79,7 +79,7 @@ export default function ContactPage() {
               >
                 <div className="overline mb-5">Contact</div>
                 <h1 className="section-heading mb-5">
-                  Let's <span style={{ color: "#C8F400" }}>Connect</span><br />We're Here to Help
+                  Let's <span style={{ color: "#C8F400" }}>Connect</span>We're Here to Help
                 </h1>
                 <p className="body-text mb-8 max-w-md">
                   Have a question or need assistance? Get in touch with our team — we're always ready to help.

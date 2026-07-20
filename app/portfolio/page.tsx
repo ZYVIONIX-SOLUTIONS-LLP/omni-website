@@ -97,7 +97,7 @@ export default function PortfolioPage() {
       <Navbar />
 
       {/* Header */}
-      <div style={{ paddingTop: "68px", background: "#ffffff" }}>
+      <div style={{ paddingTop: "68px", background: "#f9fafb" }}>
         <div className="relative py-14 lg:py-0 lg:h-[580px] flex items-center overflow-hidden">
           <div className="site-container w-full">
             <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">

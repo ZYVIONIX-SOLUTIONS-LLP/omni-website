@@ -115,7 +115,7 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* ═══ HEADER ══════════════════════════════════════ */}
-      <div style={{ paddingTop: "68px", background: "#ffffff" }}>
+      <div style={{ paddingTop: "68px", background: "#f9fafb" }}>
         <div className="relative py-14 lg:py-0 lg:h-[580px] flex items-center overflow-hidden">
           <div className="site-container w-full">
             <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
@@ -242,44 +242,27 @@ export default function ServicesPage() {
             <div className="overline mb-4 justify-center">Our Process</div>
             <h2 className="section-heading">How We Work</h2>
           </FadeUp>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ol className="circle-steps">
             {STEPS.map((step, i) => (
-              <FadeUp key={step.n} delay={i * 0.06} className="w-full">
-                <div className="relative bg-white/60 backdrop-blur-md p-8 rounded-[24px] border border-white/80 hover:border-[#C8F400] hover:shadow-[0_20px_45px_rgba(200,244,0,0.06)] hover:-translate-y-1 transition-all duration-500 group cursor-pointer flex flex-col justify-between h-full min-h-[250px] overflow-hidden">
-                  
-                  {/* Top Row: step badge and faint number */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-[10px] font-bold font-mono tracking-widest text-[#b0d900] bg-[#C8F400]/10 px-3 py-1 rounded-full uppercase">
-                      Phase {step.n}
-                    </span>
-                    <span className="text-4xl font-black font-mono text-gray-300/40 select-none transition-colors duration-500 group-hover:text-[#C8F400]/30">
-                      {step.n}
-                    </span>
-                  </div>
-
-                  {/* Text Details */}
-                  <div className="mt-8 flex-grow">
-                    <h3 className="font-heading font-bold text-lg text-[#111111] mb-2.5 transition-colors duration-300 group-hover:text-[#b0d900]">
-                      {step.title}
-                    </h3>
-                    <p className="font-sans text-xs text-gray-500 leading-relaxed max-w-[220px]">
-                      {step.desc}
-                    </p>
-                  </div>
-
-                  {/* Icon at bottom */}
-                  <div className="mt-6 flex justify-end">
-                    <div className="w-10 h-10 rounded-xl bg-white/40 border border-white/60 flex items-center justify-center transition-all duration-500 group-hover:bg-[#C8F400]/10 group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(200,244,0,0.1)]">
-                      {React.cloneElement(step.icon as React.ReactElement<any>, {
-                        className: "w-5 h-5 text-gray-600 transition-all duration-500 group-hover:text-[#b0d900] group-hover:rotate-[360deg] [stroke:currentColor]"
-                      })}
-                    </div>
-                  </div>
-                  
+              <motion.li
+                key={step.n}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05 }}
+                viewport={{ once: true, margin: "-6%" }}
+                transition={{ duration: 0.65, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="icon">
+                  {React.cloneElement(step.icon as React.ReactElement<any>, {
+                    className: "w-7 h-7",
+                    stroke: "currentColor"
+                  })}
                 </div>
-              </FadeUp>
+                <div className="title">{step.title}</div>
+                <div className="descr">{step.desc}</div>
+              </motion.li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 

@@ -248,8 +248,8 @@ export default function Home() {
               </Link>
             </FadeUp>
 
-            {/* Right 2×2 grid */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Right responsive grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {SERVICES.map((s, i) => (
                 <FadeUp key={s.title} delay={0.06 + i * 0.07}>
                   <div className="service-card h-full group">
