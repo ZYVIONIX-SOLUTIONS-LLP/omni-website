@@ -11,21 +11,21 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: "light",
+  theme: "dark",
   toggleTheme: () => {},
-  isDark: false,
+  isDark: true,
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
-  // On mount: read saved preference or system preference
+  // On mount: read saved preference or default to dark
   useEffect(() => {
     const saved = localStorage.getItem("oe-theme") as Theme | null;
     if (saved === "dark" || saved === "light") {
       setTheme(saved);
       document.documentElement.setAttribute("data-theme", saved);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    } else {
       setTheme("dark");
       document.documentElement.setAttribute("data-theme", "dark");
     }

@@ -40,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" data-theme="dark" className={`${inter.variable} ${outfit.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col overflow-x-hidden" suppressHydrationWarning>
         <ThemeProvider>
           {children}

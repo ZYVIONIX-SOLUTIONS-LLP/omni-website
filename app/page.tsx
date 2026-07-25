@@ -120,7 +120,7 @@ export default function Home() {
       <Navbar />
 
       {/* ═══ AUTO-PLAYING HERO SEQUENCE ════════════════ */}
-      <section className="relative w-full h-[88vh] lg:h-screen overflow-hidden bg-black flex items-center justify-center">
+      <section className="hero-video-section relative w-full h-[88vh] lg:h-screen overflow-hidden bg-black flex items-center justify-center">
         
         {/* Video background */}
         <video
@@ -250,17 +250,17 @@ export default function Home() {
             </FadeUp>
 
             {/* Right responsive grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {SERVICES.map((s, i) => (
                 <FadeUp key={s.title} delay={0.06 + i * 0.07}>
                   <div className="service-card h-full group">
                     <div className="icon-wrap mb-4">
-                      <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <svg className="transition-transform duration-700 ease-out group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s.icon} />
                       </svg>
                     </div>
-                    <p className="card-title mb-1.5">{s.title}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: "#9ca3af" }}>{s.desc}</p>
+                    <p className="card-title text-base font-bold tracking-tight mb-1.5">{s.title}</p>
+                    <p className="text-xs leading-relaxed text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
                   </div>
                 </FadeUp>
               ))}

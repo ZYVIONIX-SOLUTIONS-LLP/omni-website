@@ -165,20 +165,24 @@ export default function ServicesPage() {
       {/* ═══ SERVICES GRID ══════════════════════════════ */}
       <section className="section-y bg-white">
         <div className="site-container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((s, i) => (
               <FadeUp key={s.title} delay={i * 0.06}>
-                <div className="service-card h-full group">
-                  <div className="icon-wrap mb-4">
-                    <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                      <path d={s.icon} />
-                    </svg>
+                <div className="service-card group h-full">
+                  <div>
+                    <div className="icon-wrap mb-5">
+                      <svg className="transition-transform duration-700 ease-out group-hover:rotate-[360deg]" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                        <path d={s.icon} />
+                      </svg>
+                    </div>
+                    <h3 className="card-title text-lg font-bold tracking-tight mb-2">{s.title}</h3>
+                    <p className="text-xs leading-relaxed mb-6 text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
                   </div>
-                  <p className="card-title mb-2">{s.title}</p>
-                  <p className="text-xs leading-relaxed mb-4" style={{ color: "#9ca3af" }}>{s.desc}</p>
-                  <Link href="/contact" className="btn-ghost text-xs">
-                    Learn More
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  <Link href="/contact" className="inline-flex items-center gap-1.5 text-xs font-bold text-black dark:text-white group-hover:text-[#b0d900] transition-colors">
+                    <span>Learn More</span>
+                    <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
               </FadeUp>
@@ -225,7 +229,7 @@ export default function ServicesPage() {
                     </div>
                     <div>
                       <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Call Us Now</p>
-                      <p className="font-bold text-white">9349102611</p>
+                      <p className="font-bold text-white">93xxxxxxxx</p>
                     </div>
                   </a>
                 </div>
