@@ -170,7 +170,7 @@ export default function ServicesPage() {
               <FadeUp key={s.title} delay={i * 0.06}>
                 <div className="service-card h-full group">
                   <div className="icon-wrap mb-4">
-                    <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d={s.icon} />
                     </svg>
                   </div>
@@ -204,7 +204,7 @@ export default function ServicesPage() {
                     className="font-extrabold text-white mb-2 leading-tight"
                     style={{ fontSize: "clamp(1.375rem,2.8vw,2rem)", letterSpacing: "-0.03em", fontFamily: "var(--font-outfit),system-ui,sans-serif" }}
                   >
-                    Need an Expert Electrician?
+                    Have an Electrical Project in Mind?
                     <br />
                     <span style={{ color: "#C8F400" }}>We're just a call away.</span>
                   </h2>
@@ -225,7 +225,7 @@ export default function ServicesPage() {
                     </div>
                     <div>
                       <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Call Us Now</p>
-                      <p className="font-bold text-white">+1 (555) 123-4567</p>
+                      <p className="font-bold text-white">9349102611</p>
                     </div>
                   </a>
                 </div>

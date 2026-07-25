@@ -80,8 +80,12 @@ body {
 }
 
 [data-theme="dark"] .icon-wrap {
-  background: #252525;
-  color: #e8e8e8;
+  background: #000000 !important;
+  color: #C8F400 !important;
+}
+
+[data-theme="dark"] .icon-wrap svg {
+  stroke: #C8F400 !important;
 }
 
 [data-theme="dark"] .blog-card {
@@ -163,6 +167,18 @@ body {
 [data-theme="dark"] section:has(video) p,
 [data-theme="dark"] section:has(video) h2 {
   color: inherit !important;
+}
+
+[data-theme="dark"] section:has(video) .btn-lime,
+section:has(video) .btn-lime {
+  color: #000000 !important;
+}
+
+[data-theme="dark"] section:has(video) span[style*="#C8F400"],
+[data-theme="dark"] section:has(video) span[style*="C8F400"],
+section:has(video) span[style*="#C8F400"],
+section:has(video) span[style*="C8F400"] {
+  color: #C8F400 !important;
 }
 
 [data-theme="dark"] section:has(video) .btn-outline {

@@ -152,7 +152,7 @@ export default function Home() {
 
               {/* Headline */}
               <h2 
-                className="font-extrabold uppercase tracking-tight text-white mb-6"
+                className="font-extrabold uppercase tracking-tight !text-white mb-6"
                 style={{
                   fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
                   lineHeight: 1.05,
@@ -161,17 +161,17 @@ export default function Home() {
               >
                 {FEATURES[activeIndex].title}
                 <br />
-                <span style={{ color: "#C8F400" }}>{FEATURES[activeIndex].highlight}</span>
+                <span className="!text-[#C8F400]" style={{ color: "#C8F400" }}>{FEATURES[activeIndex].highlight}</span>
               </h2>
 
               {/* Description */}
-              <p className="text-white/80 text-sm md:text-base max-w-lg leading-relaxed mb-8">
+              <p className="!text-white/80 text-sm md:text-base max-w-lg leading-relaxed mb-8">
                 {FEATURES[activeIndex].desc}
               </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <Link href="/services" className="btn-lime rounded-full px-7 py-3 text-xs md:text-sm shadow-lg shadow-accent/20">
+                <Link href="/services" className="btn-lime rounded-full px-7 py-3 text-xs md:text-sm shadow-lg shadow-accent/20 !text-black">
                   Explore Services
                 </Link>
                 <Link href="/contact" className="btn-outline rounded-full px-7 py-3 text-xs md:text-sm !border-white/30 !text-white hover:!bg-white hover:!text-black">
@@ -255,7 +255,7 @@ export default function Home() {
                 <FadeUp key={s.title} delay={0.06 + i * 0.07}>
                   <div className="service-card h-full group">
                     <div className="icon-wrap mb-4">
-                      <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                      <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s.icon} />
                       </svg>
                     </div>
@@ -333,7 +333,7 @@ export default function Home() {
                 </div>
 
                 {/* Person image slideshow */}
-                <div className="relative hidden lg:block w-72 xl:w-80 self-end overflow-hidden" style={{ height: "300px", borderRadius: "20px 20px 0 0" }}>
+                <div className="relative hidden lg:block w-72 xl:w-80 self-end overflow-hidden" style={{ height: "300px", borderRadius: "0 20px 0 0" }}>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={slideIndex}
@@ -348,14 +348,14 @@ export default function Home() {
                         alt="Electrical expert"
                         fill
                         className="object-cover object-center"
-                        style={{ borderRadius: "20px 20px 0 0" }}
+                        style={{ borderRadius: "0 20px 0 0" }}
                         sizes="320px"
                       />
                     </motion.div>
                   </AnimatePresence>
                   <div
                     className="absolute inset-0 pointer-events-none"
-                    style={{ background: "linear-gradient(to top, rgba(17,17,17,0.5) 0%, transparent 50%)", borderRadius: "20px 20px 0 0" }}
+                    style={{ background: "linear-gradient(to top, rgba(17,17,17,0.5) 0%, transparent 50%)", borderRadius: "0 20px 0 0" }}
                   />
                 </div>
               </div>
