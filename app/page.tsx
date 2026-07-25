@@ -124,12 +124,13 @@ export default function Home() {
         
         {/* Video background */}
         <video
-          src="/video/I_want_a_animation_just_like_t.mp4"
+          src="/video/about-section/omni-homepage-video.mp4"
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-85 pointer-events-none"
+          style={{ transform: "scale(1)", transformOrigin: "center" }}
         />
         
         {/* Dark Overlay for premium text contrast */}
