@@ -293,7 +293,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between" style={{ height: "68px" }}>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="Omni Electrics">
+          <Link href="/" prefetch={false} className="flex items-center gap-2.5 shrink-0 group" aria-label="Omni Electrics">
             <div
               className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-gray-200/60 bg-black logo-shock"
             >
@@ -323,6 +323,7 @@ export default function Navbar() {
                 <Link
                   key={l.label + l.href}
                   href={l.href}
+                  prefetch={false}
                   className="text-sm font-semibold relative transition-colors duration-200"
                   style={{ color: active ? (isDark ? "#f0f0f0" : "#111111") : (isDark ? "#9ca3af" : "#6b7280") }}
                   onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isDark ? "#ffffff" : "#111111"; }}
@@ -395,6 +396,7 @@ export default function Navbar() {
               <Link
                 key={l.label + l.href}
                 href={l.href}
+                prefetch={false}
                 className="py-2.5 px-3 rounded-xl font-semibold text-sm transition-colors"
                 style={{
                   color: active ? (isDark ? "#f0f0f0" : "#111111") : (isDark ? "#9ca3af" : "#6b7280"),

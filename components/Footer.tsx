@@ -69,7 +69,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {QUICK.map(l => (
                 <li key={l.label}>
-                  <Link href={l.href} className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
+                  <Link href={l.href} prefetch={false} className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#C8F400"; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
                   >{l.label}</Link>
@@ -84,7 +84,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {SVCS.map(l => (
                 <li key={l}>
-                  <Link href="/services" className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
+                  <Link href="/services" prefetch={false} className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#C8F400"; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
                   >{l}</Link>
