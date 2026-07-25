@@ -185,17 +185,24 @@ body {
 /* Borders & surfaces */
 [data-theme="dark"] main,
 [data-theme="dark"] .bg-white {
-  background-color: #0f0f0f;
+  background-color: #0f0f0f !important;
+}
+
+[data-theme="dark"] [style*="background: #f9fafb"],
+[data-theme="dark"] [style*="background:#f9fafb"],
+[data-theme="dark"] [style*="background: rgb(249, 250, 251)"],
+[data-theme="dark"] [style*="background:rgb(249,250,251)"] {
+  background-color: #181818 !important;
 }
 
 [data-theme="dark"] .hero-heading,
 [data-theme="dark"] .section-heading,
 [data-theme="dark"] .card-title {
-  color: #f0f0f0;
+  color: #f0f0f0 !important;
 }
 
 [data-theme="dark"] .body-text {
-  color: #9ca3af;
+  color: #9ca3af !important;
 }
 
 
