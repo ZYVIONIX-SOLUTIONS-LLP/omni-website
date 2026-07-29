@@ -22,53 +22,71 @@ function ElectricSwitch() {
   const [clicking, setClicking] = useState(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
 
-  const playSwitchSound = async () => {
+  const playSwitchSound = (isTurningOn: boolean) => {
     try {
-      if (!audioCtxRef.current) {
-        audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+
+      const ctx = new AudioCtx();
+      if (ctx.state === "suspended") {
+        ctx.resume();
       }
-      const ctx: AudioContext = audioCtxRef.current;
-      if (ctx.state === "suspended") await ctx.resume();
       const now = ctx.currentTime;
 
-      const bufferSize = Math.floor(ctx.sampleRate * 0.025);
-      const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = noiseBuffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        const t = i / bufferSize;
-        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - t, 2.5);
-      }
-      const noiseSource = ctx.createBufferSource();
-      noiseSource.buffer = noiseBuffer;
-      const bpf = ctx.createBiquadFilter();
-      bpf.type = "bandpass";
-      bpf.frequency.value = 2200;
-      bpf.Q.value = 0.6;
-      const clickGain = ctx.createGain();
-      clickGain.gain.setValueAtTime(1.1, now);
-      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
-      noiseSource.connect(bpf);
-      bpf.connect(clickGain);
-      clickGain.connect(ctx.destination);
-      noiseSource.start(now);
-      noiseSource.stop(now + 0.03);
+      // Master Gain for clear, loud audio playback
+      const masterGain = ctx.createGain();
+      masterGain.gain.setValueAtTime(1.4, now);
+      masterGain.connect(ctx.destination);
 
+      // 1. High frequency snap / plastic latch click
+      const snapLen = Math.floor(ctx.sampleRate * 0.015);
+      const snapBuffer = ctx.createBuffer(1, snapLen, ctx.sampleRate);
+      const snapData = snapBuffer.getChannelData(0);
+      for (let i = 0; i < snapLen; i++) {
+        snapData[i] = (Math.random() * 2 - 1) * (1 - i / snapLen);
+      }
+      const snapNode = ctx.createBufferSource();
+      snapNode.buffer = snapBuffer;
+
+      const snapFilter = ctx.createBiquadFilter();
+      snapFilter.type = "bandpass";
+      snapFilter.frequency.setValueAtTime(isTurningOn ? 3400 : 2800, now);
+      snapFilter.Q.setValueAtTime(1.2, now);
+
+      snapNode.connect(snapFilter);
+      snapFilter.connect(masterGain);
+      snapNode.start(now);
+
+      // 2. Heavy mechanical spring thump / toggle knock
       const osc = ctx.createOscillator();
+      const oscGain = ctx.createGain();
       osc.type = "sine";
-      osc.frequency.setValueAtTime(180, now);
-      osc.frequency.exponentialRampToValueAtTime(35, now + 0.06);
-      const thumpGain = ctx.createGain();
-      thumpGain.gain.setValueAtTime(0.7, now);
-      thumpGain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
-      osc.connect(thumpGain);
-      thumpGain.connect(ctx.destination);
+
+      const startFreq = isTurningOn ? 280 : 220;
+      const endFreq = isTurningOn ? 45 : 35;
+
+      osc.frequency.setValueAtTime(startFreq, now);
+      osc.frequency.exponentialRampToValueAtTime(endFreq, now + 0.045);
+
+      oscGain.gain.setValueAtTime(0.9, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+      osc.connect(oscGain);
+      oscGain.connect(masterGain);
       osc.start(now);
-      osc.stop(now + 0.08);
-    } catch (_) {}
+      osc.stop(now + 0.05);
+
+      // Clean up AudioContext after playback
+      setTimeout(() => {
+        try { ctx.close(); } catch (_) {}
+      }, 150);
+    } catch (e) {
+      console.error("Switch audio play error:", e);
+    }
   };
 
-  const handleToggle = async () => {
-    await playSwitchSound();
+  const handleToggle = () => {
+    playSwitchSound(!on);
     setClicking(true);
     setTimeout(() => setClicking(false), 150);
     const newSparks = Array.from({ length: 5 }, (_, i) => ({

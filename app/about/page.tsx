@@ -45,7 +45,7 @@ function Accordion({ title, body, isOpen, onToggle }: { title: string; body: str
       style={{ border: `1.5px solid ${isOpen ? "#C8F400" : "#e5e7eb"}` }}
     >
       <button onClick={onToggle} className="w-full flex items-center justify-between px-5 py-4 text-left">
-        <span className="font-bold text-sm" style={{ color: "#111111" }}>{title}</span>
+        <span className="font-bold text-sm text-[#111111] dark:!text-white">{title}</span>
         <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200"
           style={{ background: isOpen ? "#C8F400" : "#f3f4f6" }}
         >

@@ -229,7 +229,9 @@ export default function ServicesPage() {
                     </div>
                     <div>
                       <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Call Us Now</p>
-                      <p className="font-bold text-white">93xxxxxxxx</p>
+                      <p className="font-bold text-white">
+9349102611
+</p>
                     </div>
                   </a>
                 </div>

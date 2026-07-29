@@ -24,9 +24,9 @@ const INFO = [
   {
     icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
     label: "Call Us",
-    value: "93xxxxxxxx",
+    value: "9349102611",
     sub: "Mon–Sat, 8am–6pm",
-    href: "tel:93xxxxxxxx",
+    href: "tel:9349102611",
   },
   {
     icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
@@ -79,7 +79,7 @@ export default function ContactPage() {
               >
                 <div className="overline mb-5">Contact</div>
                 <h1 className="section-heading mb-5">
-                  Let's <span style={{ color: "#C8F400" }}>Connect</span>We're Here to Help
+                  Let's <span style={{ color: "#C8F400" }}>Connect</span> We're Here to Help
                 </h1>
                 <p className="body-text mb-8 max-w-md">
                   Have a question or need assistance? Get in touch with our team — we're always ready to help.
@@ -129,7 +129,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <p className="text-[0.65rem] font-bold uppercase tracking-wider mb-1.5" style={{ color: "#9ca3af" }}>{item.label}</p>
-                  <p className="font-bold text-sm mb-1 leading-snug" style={{ color: "#111111" }}>{item.value}</p>
+                  <p className="font-bold text-sm mb-1 leading-snug" style={{ color: "#c3c9d3ff" }}>{item.value}</p>
                   <p className="text-xs leading-relaxed" style={{ color: "#9ca3af" }}>{item.sub}</p>
                 </a>
               ))}
