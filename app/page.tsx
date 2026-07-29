@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -43,25 +43,27 @@ function FadeUp({ children, delay = 0, className = "" }: { children: React.React
 
 /* ─── Data ── */
 const TRUST = [
-  { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", title: "Certified Professionals", desc: "Licensed and experienced technicians" },
-  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", title: "24/7 Availability", desc: "We're here when you need us" },
-  { icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z", title: "Safe & Reliable Solutions", desc: "Safety is our highest priority" },
-  { icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", title: "Sustainable & Smart", desc: "Energy-efficient solutions for a better future" },
+  { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", title: "Grade A Contractors", desc: "Licensed in Kerala, Karnataka & Qatar UPDA Class A" },
+  { icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", title: "One India One License", desc: "Spreading operations nationwide under CEA regulations" },
+  { icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z", title: "Statutory Compliant", desc: "Full GST, IT, ESI, PF registrations & insured force" },
+  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", title: "Turnkey Execution", desc: "From point of supply to terminal equipment" },
 ];
 
 const SERVICES = [
-  { icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", title: "Residential Electrical", desc: "Smart solutions for modern homes." },
-  { icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", title: "Commercial Electrical", desc: "Reliable systems for your business." },
-  { icon: "M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18", title: "Industrial Electrical", desc: "Powering industries with efficiency." },
-  { icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z", title: "Maintenance & Repair", desc: "Fast support for uninterrupted power." },
+  { icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", title: "Commercial & Healthcare", desc: "Turnkey HT/LT electrification for hospitals, luxury resorts, and high-rises." },
+  { icon: "M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18", title: "Power Stations & Industrial", desc: "Up to 128MW generating stations, heavy cable laying, and transformer substations." },
+  { icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z", title: "Testing & Commissioning", desc: "In-house tools and testing as per latest Indian (IS) and IEC standards." },
+  { icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", title: "Drawings & Estimation", desc: "Complete in-house CAD drafting, estimation, billing, and Powerplay project tracking." },
 ];
 
 const STATS = [
-  { n: 20,   s: "+",  l: "Years Experience" },
-  { n: 200, s: "+",  l: "Projects Completed" },
-  { n: 99,   s: "%",  l: "Client Satisfaction" },
-  { n: 100,   s: "+", l: "Skilled Employees" },
+  { n: 35,   s: "+",  l: "Years Founder Experience" },
+  { n: 128,  s: "MW", l: "Power Station Handled" },
+  { n: 7500, s: " sqft", l: "Office & Godown Facilities" },
+  { n: 100,  s: "%",  l: "Statutory Compliance" },
 ];
+
+const BRANDS = ["Schneider Electric", "GM Modular", "Orient Electric", "Tisva Lighting"];
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -80,24 +82,24 @@ export default function Home() {
 
   const FEATURES = [
     {
-      title: "ELECTRICAL SOLUTIONS",
-      highlight: "THAT EMPOWER",
-      desc: "Innovative, safe & sustainable electrical services for modern spaces."
+      title: "GRADE A ELECTRICAL",
+      highlight: "CONTRACTORS",
+      desc: "Turnkey electrical engineering solutions adhering to IS, IEC & CEA regulations nationwide."
     },
     {
-      title: "SUSTAINABLE SOLAR EPC",
-      highlight: "GREEN ENERGY",
-      desc: "High efficiency solar installations powering residential and commercial grids."
+      title: "POWERING MEGA PROJECTS",
+      highlight: "UP TO 128 MW",
+      desc: "Delivering complete electrification for luxury resorts, super-specialty hospitals, and industrial power plants."
     },
     {
-      title: "CERTIFIED SAFETY",
-      highlight: "ZERO ACCIDENTS",
-      desc: "Rigorous standards and panel upgrades designed for absolute safety."
+      title: "ONE INDIA ONE LICENSE",
+      highlight: "NATIONWIDE REACH",
+      desc: "Headquartered in Kozhikode with 7,500 sq.ft. facilities, executing turnkey projects across India."
     },
     {
-      title: "24/7 DEDICATED SUPPORT",
-      highlight: "ALWAYS ON",
-      desc: "Prompt emergency response and intelligent building automation."
+      title: "DIRECT BRAND DEALERSHIPS",
+      highlight: "SCHNEIDER, GM, ORIENT",
+      desc: "Direct supply partner with top global manufacturers ensuring authentic, premium quality installations."
     }
   ];
 
@@ -133,10 +135,10 @@ export default function Home() {
           style={{ transform: "scale(1)", transformOrigin: "center" }}
         />
         
-        {/* Dark Overlay for premium text contrast */}
+        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/90 pointer-events-none" />
 
-        {/* Text Overlays based on activeIndex */}
+        {/* Text Overlays */}
         <div className="site-container w-full relative z-25 flex items-center justify-center h-full mt-50">
           <AnimatePresence mode="wait">
             <motion.div
@@ -147,14 +149,10 @@ export default function Home() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto"
             >
-              {/* Tag capsule */}
-              
-
-              {/* Headline */}
               <h2 
                 className="font-extrabold uppercase tracking-tight !text-white mb-6"
                 style={{
-                  fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                  fontSize: "clamp(2rem, 5.5vw, 4.25rem)",
                   lineHeight: 1.05,
                   fontFamily: "var(--font-outfit), var(--font-inter), sans-serif",
                 }}
@@ -164,12 +162,10 @@ export default function Home() {
                 <span className="!text-[#C8F400]" style={{ color: "#C8F400" }}>{FEATURES[activeIndex].highlight}</span>
               </h2>
 
-              {/* Description */}
               <p className="!text-white/80 text-sm md:text-base max-w-lg leading-relaxed mb-8">
                 {FEATURES[activeIndex].desc}
               </p>
 
-              {/* CTAs */}
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <Link href="/services" className="btn-lime rounded-full px-7 py-3 text-xs md:text-sm shadow-lg shadow-accent/20 !text-black">
                   Explore Services
@@ -181,22 +177,6 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
         </div>
-
-        {/* Dynamic navigation dots for sequences */}
-        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
-          {FEATURES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className="h-2 rounded-full transition-all duration-300"
-              style={{
-                width: activeIndex === idx ? "24px" : "8px",
-                background: activeIndex === idx ? "#C8F400" : "rgba(255,255,255,0.4)"
-              }}
-              aria-label={`Go to feature ${idx + 1}`}
-            />
-          ))}
-        </div> */}
       </section>
 
       {/* ═══ TRUST STRIP ════════════════════════════════ */}
@@ -225,6 +205,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ BRAND PARTNERSHIPS STRIP ═════════════════ */}
+      <section className="py-6 border-b border-gray-100 bg-gray-50">
+        <div className="site-container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Authorized Dealerships & Partners:</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
+              {BRANDS.map((b) => (
+                <span key={b} className="text-sm font-bold text-gray-700 hover:text-black transition-colors">
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ SERVICES OVERVIEW ══════════════════════════ */}
       <section className="section-y bg-white">
         <div className="site-container">
@@ -232,14 +228,14 @@ export default function Home() {
 
             {/* Left */}
             <FadeUp>
-              <div className="overline mb-4">What We Do</div>
+              <div className="overline mb-4">Grade A Contracting</div>
               <h2 className="section-heading mb-5">
-                Complete Electrical<br />
-                Solutions Under<br />
-                One Roof
+                Complete Turnkey<br />
+                Electrical Engineering<br />
+                & Execution
               </h2>
               <p className="body-text mb-8" style={{ maxWidth: "340px" }}>
-                From small fixes to large installations, we deliver excellence in every connection.
+                From high-voltage stations to resort and hospital electrification, we handle supply, panel wiring, testing, and commissioning.
               </p>
               <Link href="/services" className="btn-dark">
                 View All Services
@@ -303,13 +299,11 @@ export default function Home() {
               className="relative overflow-hidden rounded-3xl"
               style={{ background: "#111111" }}
             >
-              {/* Dot grid */}
               <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
                 style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "28px 28px" }}
               />
 
-              <div className="grid lg:grid-cols-[1fr_auto] items-end gap-0">
-                {/* Text */}
+              <div className="grid lg:grid-cols-[1fr_auto] items-stretch gap-0">
                 <div className="px-8 sm:px-14 py-12 lg:py-14">
                   <h2
                     className="font-extrabold text-white mb-3 leading-tight"
@@ -319,10 +313,10 @@ export default function Home() {
                       fontFamily: "var(--font-outfit),system-ui,sans-serif",
                     }}
                   >
-                    Have an Electrical Project in Mind?
+                    Need Grade A Electrical Contracting?
                   </h2>
                   <p className="text-sm mb-8 max-w-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>
-                    Let's turn your ideas into powerful solutions.
+                    Consult with founder Amritlal V.K. and our engineering team for full project estimation and design.
                   </p>
                   <Link href="/contact" className="btn-lime">
                     Get a Free Quote
@@ -332,8 +326,7 @@ export default function Home() {
                   </Link>
                 </div>
 
-                {/* Person image slideshow */}
-                <div className="relative hidden lg:block w-72 xl:w-80 self-end overflow-hidden" style={{ height: "300px", borderRadius: "0 20px 0 0" }}>
+                <div className="relative hidden lg:block w-72 xl:w-80 h-full min-h-[300px] overflow-hidden" style={{ borderRadius: "0 1.5rem 1.5rem 0" }}>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={slideIndex}
@@ -348,14 +341,13 @@ export default function Home() {
                         alt="Electrical expert"
                         fill
                         className="object-cover object-center"
-                        style={{ borderRadius: "0 20px 0 0" }}
                         sizes="320px"
                       />
                     </motion.div>
                   </AnimatePresence>
                   <div
                     className="absolute inset-0 pointer-events-none"
-                    style={{ background: "linear-gradient(to top, rgba(17,17,17,0.5) 0%, transparent 50%)", borderRadius: "0 20px 0 0" }}
+                    style={{ background: "linear-gradient(to top, rgba(17,17,17,0.4) 0%, transparent 40%)" }}
                   />
                 </div>
               </div>
@@ -369,37 +361,30 @@ export default function Home() {
         <div className="site-container">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
             <FadeUp>
-              <div className="overline mb-4">Our Projects</div>
-              <h2 className="section-heading" style={{ maxWidth: "360px" }}>
-                Delivering Power<br />Across Every Project
+              <div className="overline mb-4">Featured Projects</div>
+              <h2 className="section-heading" style={{ maxWidth: "420px" }}>
+                Multi-Crore Electrical<br />Projects Delivered
               </h2>
             </FadeUp>
             <FadeUp delay={0.1}>
               <p className="body-text max-w-xs" style={{ textAlign: "right" }}>
-                Explore some of our most recent work that reflects our commitment to quality and excellence.
+                Proven execution across super-specialty hospitals, luxury resorts, and high-voltage commercial structures.
               </p>
             </FadeUp>
           </div>
 
-          {/* Filter tabs */}
-          <FadeUp delay={0.05} className="flex flex-wrap gap-2 mb-7">
-            {["All", "Residential", "Commercial", "Industrial"].map((c, i) => (
-              <button key={c} className={`ftab ${i === 0 ? "active" : ""}`}>{c}</button>
-            ))}
-          </FadeUp>
-
           {/* 2×3 gallery */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { src: "/project-residential.png", title: "Modern Smart Villa",          cat: "Residential" },
-              { src: "/project-commercial.png",  title: "Corporate Office Building",    cat: "Commercial" },
-              { src: "/project-industrial.png",  title: "Industrial Manufacturing Unit",cat: "Industrial" },
-              { src: "/project-hv.png",          title: "Luxury Apartments",            cat: "Residential" },
-              { src: "/project-solar.png",       title: "Shopping Mall Complex",        cat: "Commercial" },
-              { src: "/project-hospital.png",    title: "Warehouse Lighting Upgrade",   cat: "Industrial" },
+              { src: "/taj-hotel-wayanad.jpg", title: "Taj Hotel, Wayanad", cat: "₹6.0 Crore (600L)", loc: "Wayanad" },
+              { src: "/aster-mims-kasaragod.jpg", title: "Aster Mims Hospital", cat: "₹7.0 Crore (700L)", loc: "Kasaragod" },
+              { src: "/ibni-resorts.jpg", title: "IBNI Spa Resorts", cat: "₹4.0 Crore (400L)", loc: "Madikeri, Karnataka" },
+              { src: "/khaleej-block-aster-mims.jpg", title: "Khaleej Block - Aster Mims", cat: "₹1.1 Crore (110L)", loc: "Kozhikode" },
+              { src: "/bhima-jewellers.jpg", title: "Bhima Jewellers HT/LT Works", cat: "₹50 Lakhs", loc: "Kozhikode" },
+              { src: "/mandara-healing-space.jpg", title: "Mandara Healing Space by HiLITE", cat: "₹60 Lakhs (Ongoing)", loc: "Kozhikode" },
             ].map((p, i) => (
               <FadeUp key={p.title} delay={i * 0.06}>
-                <div className="relative rounded-2xl overflow-hidden group cursor-pointer" style={{ aspectRatio: "4/3" }}>
+                <div className="relative rounded-2xl overflow-hidden group cursor-pointer border border-gray-100 shadow-sm" style={{ aspectRatio: "4/3" }}>
                   <Image
                     src={p.src}
                     alt={p.title}
@@ -409,7 +394,7 @@ export default function Home() {
                   />
                   <div
                     className="absolute inset-0 flex flex-col justify-end p-4"
-                    style={{ background: "linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%)" }}
+                    style={{ background: "linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 60%)" }}
                   >
                     <span
                       className="text-[0.65rem] font-bold px-2.5 py-0.5 rounded-full w-fit mb-2"
@@ -417,7 +402,8 @@ export default function Home() {
                     >
                       {p.cat}
                     </span>
-                    <p className="text-white font-bold text-sm leading-snug">{p.title}</p>
+                    <p className="text-white font-bold text-base leading-snug">{p.title}</p>
+                    <p className="text-xs text-white/70 mt-0.5">📍 {p.loc}</p>
                   </div>
                 </div>
               </FadeUp>
@@ -426,7 +412,7 @@ export default function Home() {
 
           <FadeUp delay={0.2} className="mt-8 flex justify-center">
             <Link href="/portfolio" className="btn-outline">
-              View All Projects →
+              View All 9 Projects →
             </Link>
           </FadeUp>
         </div>

@@ -45,7 +45,7 @@ function Accordion({ title, body, isOpen, onToggle }: { title: string; body: str
       style={{ border: `1.5px solid ${isOpen ? "#C8F400" : "#e5e7eb"}` }}
     >
       <button onClick={onToggle} className="w-full flex items-center justify-between px-5 py-4 text-left">
-        <span className="font-bold text-sm text-[#111111] dark:!text-white">{title}</span>
+        <span className="font-bold text-sm accordion-title">{title}</span>
         <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200"
           style={{ background: isOpen ? "#C8F400" : "#f3f4f6" }}
         >
@@ -64,16 +64,28 @@ function Accordion({ title, body, isOpen, onToggle }: { title: string; body: str
 }
 
 const STATS = [
-  { n: 20,   s: "+",  l: "Years Experience" },
-  { n: 200, s: "+",  l: "Projects Completed" },
-  { n: 99,   s: "%",  l: "Happy Clients" },
-  { n: 100,   s: "+",  l: "Skilled Employees" },
+  { n: 35,   s: "+",  l: "Years Founder Experience" },
+  { n: 128,  s: "MW", l: "Max Power Station Handled" },
+  { n: 7500, s: " sqft", l: "Office & Warehouse Space" },
+  { n: 100,  s: "%",  l: "Statutory & Safety Compliant" },
 ];
 
-const VALUES = [
-  { icon: "M13 10V3L4 14h7v7l9-11h-7z", title: "Innovation",  desc: "Pioneering new electrical technologies and sustainable energy solutions." },
-  { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", title: "Safety",       desc: "ISO 45001 compliant with a zero-incident safety culture across all sites." },
-  { icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z", title: "Teamwork",    desc: "Collaborative approach with skilled engineers committed to excellence." },
+const STRENGTHS = [
+  {
+    title: "Engineering Team & Supervision",
+    desc: "Group of Electrical and Electronic engineers backed by highly skilled Supervisors and Electricians, trained to IS and IEC standards.",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+  },
+  {
+    title: "Advanced In-House Testing & Software",
+    desc: "Equipped with state-of-the-art testing & commissioning tools, in-house CAD drawing & estimation facilities, and 'Powerplay' software for real-time project management.",
+    icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+  },
+  {
+    title: "Full Compliance & Dealerships",
+    desc: "Complete statutory compliance (GST, IT, ESI, PF) with insured workforce. Direct dealership of Schneider Electric, GM, Orient, Tisva, and top international brands.",
+    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+  }
 ];
 
 export default function AboutPage() {
@@ -91,9 +103,9 @@ export default function AboutPage() {
           <div className="site-container w-full">
             <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
               <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }} className="max-w-2xl lg:max-w-3xl">
-                <div className="overline mb-4">About Us</div>
+                <div className="overline mb-4">Grade A Electrical Contractors</div>
                 <h1 className="section-heading mb-5">Powering Spaces <span style={{ color: "#C8F400" }}>Empowering</span><br /> Lives</h1>
-                <p className="body-text">Over a decade of delivering safe, reliable, and innovative electrical solutions.</p>
+                <p className="body-text">Established in Kozhikode and expanding nationwide under CEA "One India One License" regulations, delivering Turnkey Electrical Solutions.</p>
               </motion.div>
             </div>
           </div>
@@ -142,13 +154,13 @@ export default function AboutPage() {
                   animate={{ y: [0, -8, 0] }}
                   transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
                   className="absolute rounded-2xl shadow-xl px-5 py-4"
-                  style={{ bottom: "-8px", right: "-8px", background: "#111111", minWidth: "160px", zIndex: 10 }}
+                  style={{ bottom: "-8px", right: "-8px", background: "#111111", minWidth: "180px", zIndex: 10 }}
                 >
                   <div className="font-extrabold leading-none mb-1"
                     style={{ fontSize: "2.25rem", color: "#C8F400", letterSpacing: "-0.04em", fontFamily: "var(--font-outfit),system-ui,sans-serif" }}>
-                    20+
+                    GRADE A
                   </div>
-                  <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Years of Excellence</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Kerala & Karnataka</div>
                 </motion.div>
               </div>
             </FadeUp>
@@ -156,27 +168,27 @@ export default function AboutPage() {
             {/* Content */}
             <div>
               <FadeUp delay={0.05}>
-                <div className="overline mb-4">Our Story</div>
-                <h2 className="section-heading mb-5">Who We Are</h2>
-                <p className="body-text mb-4">Omni Electrics is a trusted Class A Electrical Contractor founded to redefine electrical contracting standards — delivering precision engineering across residential, commercial, and industrial sectors.</p>
-                <p className="body-text mb-8">Our certified team handles everything from residential wiring to high-voltage substations, solar EPC, and industrial automation, maintaining the highest quality and safety benchmarks.</p>
+                <div className="overline mb-4">Our Company & Reach</div>
+                <h2 className="section-heading mb-5">Grade A Electrical Contracting Across India</h2>
+                <p className="body-text mb-4">Omni Electrics is a premier Grade A Electrical Contracting firm based in Kozhikode, Kerala. Operating with 6,000 sq ft godown space and 1,500 sq ft head office, we provide end-to-end electrical design, HT/LT installations, panel wiring, testing, and commissioning.</p>
+                <p className="body-text mb-8">Aligned with the latest Central Electricity Authority (CEA) regulations under "ONE INDIA ONE LICENSE", Omni Electrics is executing flagship high-voltage commercial, healthcare, luxury resort, and industrial projects nationwide.</p>
               </FadeUp>
               <FadeUp delay={0.1} className="flex flex-col gap-3 mb-8">
                 <Accordion 
-                  title="Our Mission" 
-                  body="To deliver safe, reliable, and innovative electrical solutions that empower communities, businesses, and industries while upholding the highest safety and quality standards." 
+                  title="Our Engineering Assurance" 
+                  body="We assure our customers electrical designs based on proven engineering practices adhering strictly to International and Indian (IS/IEC) standards. Execution is centered on safe, sustainable practices with rigorous testing and verification." 
                   isOpen={activeAccordion === 0}
                   onToggle={() => setActiveAccordion(0)}
                 />
                 <Accordion 
-                  title="Our Vision" 
-                  body="To be the most trusted electrical solutions provider in the region, driving sustainable energy practices and technological innovation in every project." 
+                  title="Infrastructure & Logistics" 
+                  body="With over 7,500 sq ft combined office and godown facilities in Kozhikode, in-house design & estimation software, and dedicated Powerplay project management software, we execute large-scale turnkey contracts with absolute schedule adherence." 
                   isOpen={activeAccordion === 1}
                   onToggle={() => setActiveAccordion(1)}
                 />
                 <Accordion 
-                  title="Our Values" 
-                  body="Safety, Integrity, Innovation, Teamwork, and Customer Excellence — these core values guide every decision we make and every project we deliver." 
+                  title="Official Brand Dealerships" 
+                  body="We hold direct dealership and distribution ties with leading international and Indian electrical manufacturers, including Schneider Electric India, GM Modular, Orient Electric, and Tisva." 
                   isOpen={activeAccordion === 2}
                   onToggle={() => setActiveAccordion(2)}
                 />
@@ -189,6 +201,71 @@ export default function AboutPage() {
               </FadeUp>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Leadership Spotlight Section */}
+      <section className="py-20" style={{ background: "#f9fafb" }}>
+        <div className="site-container">
+          <FadeUp className="mb-12">
+            <div className="overline mb-4">Leadership</div>
+            <h2 className="section-heading">Key Person & Leadership</h2>
+          </FadeUp>
+
+          <FadeUp>
+            <div className="bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-center">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden mb-5 border-4 border-white shadow-[0_14px_36px_rgba(0,0,0,0.28)] bg-gray-100">
+                  <Image
+                    src="/image/about-page/amritlal_vk.jpg"
+                    alt="Amritlal V.K. - Founder & Owner Omni Electrics"
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: "50% 25%" }}
+                    priority
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-[#111111] mb-1 amritlal-name">AMRITLAL V.K.</h3>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#9ca3af] mb-2">Owner & Sole Proprietor</p>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#111111] text-[#C8F400] text-xs font-bold mb-2 be-badge">
+                  BE Electrical & Electronics (1991)
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#C8F400]/20 text-[#111] text-xs font-semibold">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  35+ Years Engineering Expertise
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold card-title text-[#111111] mb-4">Credentials & Certifications</h4>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-3 text-sm text-gray-700 cred-list-item">
+                    <span className="w-2 h-2 rounded-full bg-[#C8F400] mt-2 shrink-0" />
+                    <span><strong>Grade A Supervisor License:</strong> Certified in Kerala and Karnataka.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-gray-700 cred-list-item">
+                    <span className="w-2 h-2 rounded-full bg-[#C8F400] mt-2 shrink-0" />
+                    <span><strong>Class A Supervisor (Qatar UPDA):</strong> Internationally certified Class A supervisor with middle-east mega project expertise.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-gray-700 cred-list-item">
+                    <span className="w-2 h-2 rounded-full bg-[#C8F400] mt-2 shrink-0" />
+                    <span><strong>Comprehensive Project Execution:</strong> Decades of experience in design, supervision, operation, maintenance, testing, and commissioning of electrical installations up to 128 MW power generating stations, industrial factories, hospital complexes, luxury resorts, and high-rise commercial structures.</span>
+                  </li>
+                </ul>
+
+                <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-gray-100">
+                  <div className="p-4 rounded-2xl bg-gray-50 edu-card">
+                    <p className="text-xs text-gray-400 font-bold uppercase mb-1">Education</p>
+                    <p className="text-sm font-bold text-gray-800">B.E. Electrical & Electronics (1991 Batch)</p>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-gray-50 edu-card">
+                    <p className="text-xs text-gray-400 font-bold uppercase mb-1">Specialization</p>
+                    <p className="text-sm font-bold text-gray-800">128MW Generating Stations & HT/LT Substations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -209,22 +286,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Operational Strengths */}
       <section className="section-y" style={{ background: "#f9fafb" }}>
         <div className="site-container">
           <FadeUp className="text-center mb-12">
-            <div className="overline mb-4 justify-center">What Drives Us</div>
-            <h2 className="section-heading">Our Core Values</h2>
+            <div className="overline mb-4 justify-center">Why Choose Omni Electrics</div>
+            <h2 className="section-heading">Our Core Strengths & Infrastructure</h2>
           </FadeUp>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {VALUES.map((v, i) => (
+          <div className="grid sm:grid-cols-3 gap-6">
+            {STRENGTHS.map((v, i) => (
               <FadeUp key={v.title} delay={i * 0.08}>
-                <div className="service-card text-center group">
-                  <div className="icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-colors duration-200 group-hover:bg-[#C8F400]" style={{ background: "#f3f4f6" }}>
-                    <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
+                <div className="service-card text-center group h-full flex flex-col justify-between">
+                  <div>
+                    <div className="icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 transition-colors duration-200 group-hover:bg-[#C8F400]" style={{ background: "#f3f4f6" }}>
+                      <svg className="transition-transform duration-500 group-hover:rotate-[360deg]" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
+                    </div>
+                    <p className="card-title mb-3">{v.title}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#9ca3af" }}>{v.desc}</p>
                   </div>
-                  <p className="card-title mb-3">{v.title}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "#9ca3af" }}>{v.desc}</p>
                 </div>
               </FadeUp>
             ))}

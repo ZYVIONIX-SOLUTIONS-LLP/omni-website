@@ -56,8 +56,9 @@ body {
   color: #f0f0f0;
 }
 
-[data-theme="dark"] .card-title {
-  color: #f0f0f0;
+[data-theme="dark"] .card-title,
+[data-theme="dark"] h4 {
+  color: #ffffff !important;
 }
 
 [data-theme="dark"] .overline {
@@ -95,7 +96,59 @@ body {
   border-color: #2a2a2a;
 }
 
+[data-theme="dark"] .edu-card {
+  background-color: #1a1a1a !important;
+  color: #e5e7eb !important;
+}
+
+[data-theme="dark"] .edu-card p.text-gray-800 {
+  color: #e5e7eb !important;
+}
+
+[data-theme="dark"] .cred-list-item {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] .be-badge {
+  background-color: #1a1a1a !important;
+}
+
+[data-theme="dark"] h3.amritlal-name,
+[data-theme="dark"] .amritlal-name {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] h4.card-title,
+[data-theme="dark"] .card-title {
+  color: #ffffff !important;
+}
+
+/* Portfolio cards */
+[data-theme="dark"] .pcard {
+  background-color: #1c1c1c !important;
+  border-color: #2a2a2a !important;
+}
+
+[data-theme="dark"] h3.pcard-title,
+[data-theme="dark"] .pcard-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .pcard-cat {
+  color: #9ca3af !important;
+}
+
+[data-theme="dark"] .pcard-loc {
+  color: #9ca3af !important;
+}
+
+[data-theme="dark"] .pcard-scope {
+  color: #d1d5db !important;
+  border-color: #2a2a2a !important;
+}
+
 /* Filter tabs */
+
 [data-theme="dark"] .ftab {
   background: #1a1a1a;
   border-color: #2a2a2a;
@@ -768,4 +821,12 @@ body {
   .circle-steps li .descr {
     font-size: 0.65rem;
   }
+}
+
+.accordion-title {
+  color: #000000 !important;
+}
+
+[data-theme="dark"] .accordion-title {
+  color: #ffffff !important;
 }

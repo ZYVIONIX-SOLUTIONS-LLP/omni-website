@@ -24,9 +24,9 @@ const INFO = [
   {
     icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
     label: "Call Us",
-    value: "9349102611",
-    sub: "Mon–Sat, 8am–6pm",
-    href: "tel:9349102611",
+    value: "+91 9387322262",
+    sub: "Landline: 0495-2771529",
+    href: "tel:+919387322262",
   },
   {
     icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
@@ -38,7 +38,7 @@ const INFO = [
   {
     icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z",
     label: "Visit Us",
-    value: "5/778, Rarichan Rd",
+    value: "5/778, Balasaras, Rarichan Rd",
     sub: "Nadakkave, Kozhikode, Kerala 673006",
     href: "https://www.google.com/maps/place/omni+electrics/@11.2723973,75.782116,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba65f0070b0a4ad:0x1caa15919070f789!8m2!3d11.2723973!4d75.7846909!16s%2Fg%2F11x6mvp68m",
   },
@@ -164,7 +164,7 @@ export default function ContactPage() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
             </svg>
-            Call Now: 9349102611
+            Call Now: +91 9387322262
           </a>
         </div>
       </section> */}

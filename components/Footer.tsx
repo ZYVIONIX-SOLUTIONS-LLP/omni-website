@@ -123,22 +123,23 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-[#C8F400]"
                 >
-                  5/778, Rarichan Rd,<br />
+                  5/778, Balasaras, Rarichan Rd,<br />
                   Nadakkave, Kozhikode,<br />
                   Kerala 673006
                 </a>
               </li>
-              <li className="flex items-center gap-2.5">
-                <svg className="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <li className="flex items-start gap-2.5">
+                <svg className="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <a href="tel:
-9349102611
-" className="transition-colors hover:text-[#C8F400]">
-                  
-9349102611
-
-                </a>
+                <div className="flex flex-col gap-0.5">
+                  <a href="tel:+919387322262" className="transition-colors hover:text-[#C8F400]">
+                    +91 9387322262
+                  </a>
+                  <a href="tel:04952771529" className="transition-colors hover:text-[#C8F400]">
+                    0495-2771529
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <svg className="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

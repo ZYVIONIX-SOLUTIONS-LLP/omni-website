@@ -361,7 +361,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center">
-            <Link href="https://wa.me/9349102611" className="nav-pill" id="nav-cta" target="_blank" rel="noopener noreferrer">
+            <Link href="https://wa.me/919387322262" className="nav-pill" id="nav-cta" target="_blank" rel="noopener noreferrer">
               Get a Quote
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -426,7 +426,7 @@ export default function Navbar() {
             );
           })}
           <div className="mt-3 pt-3" style={{ borderTop: isDark ? "1px solid #2a2a2a" : "1px solid #e5e7eb" }}>
-            <Link href="https://wa.me/9349102611" className="nav-pill w-fit" target="_blank" rel="noopener noreferrer">
+            <Link href="https://wa.me/919387322262" className="nav-pill w-fit" target="_blank" rel="noopener noreferrer">
               Get a Quote
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
