@@ -187,10 +187,18 @@ export default function Home() {
               <FadeUp key={t.title} delay={i * 0.07}>
                 <div className="flex items-start gap-3.5 group">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: "rgba(200,244,0,0.12)" }}
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                      background: "linear-gradient(145deg, #09090b 0%, #161619 100%)",
+                      borderTop: "1.5px solid #000000",
+                      borderLeft: "1.5px solid #000000",
+                      borderBottom: "1.5px solid rgba(255, 255, 255, 0.12)",
+                      borderRight: "1.5px solid rgba(255, 255, 255, 0.08)",
+                      boxShadow:
+                        "inset 2.5px 2.5px 6px rgba(0, 0, 0, 0.95), inset -1.5px -1.5px 4px rgba(255, 255, 255, 0.05), 0 0 10px rgba(200, 244, 0, 0.1)",
+                    }}
                   >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8F400" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ filter: "drop-shadow(0 0 4px rgba(200,244,0,0.5))" }}>
                       <path d={t.icon} />
                     </svg>
                   </div>
@@ -205,17 +213,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ BRAND PARTNERSHIPS STRIP ═════════════════ */}
-      <section className="py-6 border-b border-gray-100 bg-gray-50">
-        <div className="site-container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Authorized Dealerships & Partners:</span>
-            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
-              {BRANDS.map((b) => (
-                <span key={b} className="text-sm font-bold text-gray-700 hover:text-black transition-colors">
-                  {b}
-                </span>
-              ))}
+      {/* ═══ BRAND PARTNERSHIPS STRIP (Inverted Skeuomorphism) ═════════════════ */}
+      <section className="py-8 bg-white dark:bg-[#0a0a0c] brand-section flex justify-center overflow-hidden transition-colors duration-300">
+        <div className="site-container flex justify-center max-w-4xl">
+          <div
+            className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-6 px-6 py-3 rounded-full overflow-hidden brand-notch-bar bg-[#e5e9f0] dark:bg-[#0d0d0f]"
+            style={{
+              borderRadius: "100px",
+            }}
+          >
+            <span className="text-[0.68rem] font-extrabold uppercase tracking-widest text-[#3b5200] dark:text-[#C8F400] flex items-center gap-2 shrink-0 z-10 brand-notch-title pr-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#527000] dark:bg-[#C8F400] shadow-[0_0_8px_rgba(82,112,0,0.5)] dark:shadow-[0_0_8px_rgba(200,244,0,0.8)]" />
+              Authorized Dealerships & Partners:
+            </span>
+
+            {/* Marquee ticker moving Left -> Right */}
+            <div className="relative w-full overflow-hidden flex items-center">
+              <motion.div
+                animate={{ x: ["-50%", "0%"] }}
+                transition={{
+                  repeat: Infinity,
+                  ease: "linear",
+                  duration: 30,
+                }}
+                className="flex items-center gap-8 whitespace-nowrap"
+              >
+                {[...BRANDS, ...BRANDS, ...BRANDS, ...BRANDS].map((b, i) => (
+                  <span
+                    key={`${b}-${i}`}
+                    className="text-xs font-extrabold brand-text-item hover:text-[#3b5200] dark:hover:text-[#C8F400] transition-colors cursor-default inline-flex items-center gap-8"
+                  >
+                    <span className="brand-text-label">{b}</span>
+                    <span className="w-2 h-2 rounded-full shrink-0 brand-dot-sep" style={{ background: "#000000", minWidth: "8px", minHeight: "8px" }} />
+                  </span>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>
@@ -326,7 +358,7 @@ export default function Home() {
                   </Link>
                 </div>
 
-                <div className="relative hidden lg:block w-72 xl:w-80 h-full min-h-[300px] overflow-hidden" style={{ borderRadius: "0 1.5rem 1.5rem 0" }}>
+                <div className="relative hidden lg:block w-72 xl:w-80 h-full min-h-[220px] overflow-hidden" style={{ borderRadius: "0 1.5rem 1.5rem 0" }}>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={slideIndex}

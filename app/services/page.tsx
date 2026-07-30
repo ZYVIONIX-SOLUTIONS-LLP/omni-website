@@ -209,8 +209,27 @@ const STEPS = [
   },
 ];
 
+const SLIDES = [
+  "/slide-1.jpg", 
+  "/slide-2.jpg", 
+  "/slide-3.jpg", 
+  "/slide-4.jpg",
+  "/slide-5.jpg",
+  "/slide-6.jpg",
+  "/slide-7.jpg",
+  "/slide-8.jpg"
+];
+
 export default function ServicesPage() {
   const [activeService, setActiveService] = useState<Service | null>(null);
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % SLIDES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Lock body scroll when modal open
   useEffect(() => {
@@ -587,42 +606,60 @@ export default function ServicesPage() {
         <div className="site-container">
           <FadeUp>
             <div
-              className="relative overflow-hidden rounded-3xl px-10 py-12"
+              className="relative overflow-hidden rounded-3xl"
               style={{ background: "#111111" }}
             >
               <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
                 style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "24px 24px" }}
               />
-              <div className="relative z-10 grid lg:grid-cols-2 items-center gap-8">
-                <div>
+              <div className="grid lg:grid-cols-[1fr_auto] items-stretch gap-0">
+                <div className="px-8 sm:px-12 py-8 lg:py-9">
                   <h2
                     className="font-extrabold text-white mb-2 leading-tight"
-                    style={{ fontSize: "clamp(1.375rem,2.8vw,2rem)", letterSpacing: "-0.03em", fontFamily: "var(--font-outfit),system-ui,sans-serif" }}
+                    style={{
+                      fontSize: "clamp(1.35rem,2.8vw,2.15rem)",
+                      letterSpacing: "-0.03em",
+                      fontFamily: "var(--font-outfit),system-ui,sans-serif",
+                    }}
                   >
                     Have an Electrical Project in Mind?
                     <br />
                     <span style={{ color: "#C8F400" }}>We're just a call away.</span>
                   </h2>
-                  <p className="text-sm mb-7" style={{ color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
+                  <p className="text-xs sm:text-sm mb-5 max-w-sm" style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
                     Our certified team is ready to handle any electrical challenge, big or small.
                   </p>
                   <Link href="/contact" className="btn-lime">
                     Get a Free Quote
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
-                <div className="hidden lg:flex justify-end">
-                  <a href="tel:+919387322262" className="service-card flex items-center gap-4 p-5 rounded-2xl group border border-white/10 hover:border-[#C8F400]/40 transition-colors">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-110" style={{ background: "#C8F400" }}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l1.48-1.48a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Call Us Now</p>
-                      <p className="font-bold text-white">+91 9387322262</p>
-                    </div>
-                  </a>
+
+                <div className="relative hidden lg:block w-72 xl:w-80 h-full min-h-[220px] overflow-hidden" style={{ borderRadius: "0 1.5rem 1.5rem 0" }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={slideIndex}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6 }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      <Image
+                        src={SLIDES[slideIndex]}
+                        alt="Electrical project showcase"
+                        fill
+                        className="object-cover object-center"
+                        sizes="320px"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(to top, rgba(17,17,17,0.4) 0%, transparent 40%)" }}
+                  />
                 </div>
               </div>
             </div>
