@@ -607,7 +607,7 @@ export default function ServicesPage() {
           <FadeUp>
             <div
               className="relative overflow-hidden rounded-3xl"
-              style={{ background: "#111111" }}
+              style={{ background: "#f9fafb" }}
             >
               <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
                 style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "24px 24px" }}
