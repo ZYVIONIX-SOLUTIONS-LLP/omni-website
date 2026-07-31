@@ -88,6 +88,42 @@ const STRENGTHS = [
   }
 ];
 
+const KEY_LEADERSHIP = [
+  { name: "VIJAYALAKSHMI", role: "Office Administrator", dept: "Administration", avatar: "/image/about-page/avatar_female_1.png" },
+  { name: "MOHAMMED SADIQE", role: "Project Engineer", dept: "Engineering", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "DHANESH AP", role: "Senior Supervisor", dept: "Site Operations", avatar: "/image/about-page/avatar_male_3.png" },
+  { name: "VIPINDAS", role: "Senior Supervisor", dept: "Site Operations", avatar: "/image/about-page/avatar_male_3.png" },
+];
+
+const NON_ELECTRICIANS = [
+  { name: "MUHAMMED SHARFAS PV", role: "Accountant", dept: "Finance", avatar: "/image/about-page/avatar_male_2.png" },
+  { name: "NEHLA", role: "Purchase Manager", dept: "Procurement", avatar: "/image/about-page/avatar_female_2.png" },
+  { name: "AVANISH M", role: "Supervisor", dept: "Site Operations", avatar: "/image/about-page/avatar_male_3.png" },
+  { name: "SIBIL P RAJAN", role: "Supervisor", dept: "Site Operations", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "ABHISHEK", role: "Supervisor", dept: "Site Operations", avatar: "/image/about-page/avatar_male_2.png" },
+];
+
+const ELECTRICIANS = [
+  { name: "ROHITH.T", role: "Senior Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "AKHILESH. PK", role: "Senior Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_2.png" },
+  { name: "DEEPAK SEBASTIAN", role: "Senior Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "SREERAJ", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_3.png" },
+  { name: "AKSHAY KUMAR", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "MUHAMMED ASLAM", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_2.png" },
+  { name: "ADHARSH P", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_3.png" },
+  { name: "MANIKANDAN R", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "MUHAMMED NABHAN", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_2.png" },
+  { name: "JITH", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_2.png" },
+  { name: "ABHINAV M", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_3.png" },
+  { name: "ADHITYAN", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_1.png" },
+  { name: "HARINAD", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_2.png" },
+  { name: "RAHUL KUMAR", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_3.png" },
+  { name: "PANKAJ KUMAR", role: "Electrician", dept: "Technical", avatar: "/image/about-page/avatar_male_1.png" }
+];
+
+
+
+
 export default function AboutPage() {
   const sRef = useRef<HTMLElement>(null);
   const sIv  = useInView(sRef as React.RefObject<Element>, { once: true });
@@ -205,7 +241,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Spotlight Section */}
-      <section className="py-20" style={{ background: "#f9fafb" }}>
+      <section className="py-20 leadership-section">
         <div className="site-container">
           <FadeUp className="mb-12">
             <div className="overline mb-4">Leadership</div>
@@ -213,7 +249,8 @@ export default function AboutPage() {
           </FadeUp>
 
           <FadeUp>
-            <div className="bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-center">
+            <div className="bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-center leadership-card">
+
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden mb-5 border-4 border-white shadow-[0_14px_36px_rgba(0,0,0,0.28)] bg-gray-100">
                   <Image
@@ -269,7 +306,140 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Team & Key Personnel Section */}
+      <section className="py-20 overflow-hidden relative team-section">
+
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#C8F400]/10 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="site-container mb-12">
+          <FadeUp className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="overline mb-3">Management & Workforce</div>
+              <h2 className="section-heading">Key Personnel & Execution Team</h2>
+            </div>
+            <p className="body-text max-w-md text-sm">
+              Our key management heads and dedicated site execution force driving precision, safety, and compliance across every project nationwide.
+            </p>
+          </FadeUp>
+
+          {/* 4 Key Person Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+            {KEY_LEADERSHIP.map((emp, i) => (
+              <FadeUp key={emp.name} delay={i * 0.08}>
+                <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 hover:border-[#C8F400] transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 flex flex-col items-center text-center group h-full justify-between relative overflow-hidden emp-card">
+                  <div className="w-full flex justify-end mb-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#C8F400] text-[#111] emp-badge">
+                      {emp.dept}
+                    </span>
+                  </div>
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-gray-100 group-hover:scale-105 transition-transform duration-300 emp-avatar-box">
+                    <Image
+                      src={emp.avatar}
+                      alt={emp.name}
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                    />
+                  </div>
+                  <div className="w-full">
+                    <h3 className="font-extrabold text-base text-[#111111] mb-1 transition-colors emp-name">
+                      {emp.name}
+                    </h3>
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-500 emp-role">
+                      {emp.role}
+                    </p>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+
+        {/* Continuous Flow Marquee of All Employees */}
+        <div className="mt-14 pt-8 border-t border-gray-100 team-divider">
+          <div className="site-container mb-6">
+            <div className="text-xs font-bold uppercase tracking-widest text-gray-400 emp-role">Engineering & Technical Force</div>
+          </div>
+
+          {/* Row 1: Non-Electricians (Supervisors, Accountants, Purchase Managers) */}
+          <div className="relative w-full overflow-hidden py-3">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none marquee-mask-left" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none marquee-mask-right" />
+
+            <div className="animate-marquee-ltr flex gap-5">
+              {[...NON_ELECTRICIANS, ...NON_ELECTRICIANS, ...NON_ELECTRICIANS].map((emp, i) => (
+                <div
+                  key={`${emp.name}-1-${i}`}
+                  className="w-72 shrink-0 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#C8F400] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-4 group emp-card"
+                >
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-md bg-gray-100 group-hover:scale-105 transition-transform duration-300 emp-avatar-box">
+                    <Image
+                      src={emp.avatar}
+                      alt={emp.name}
+                      fill
+                      className="object-cover"
+                      sizes="64px"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="font-bold text-sm text-[#111111] truncate emp-name">
+                      {emp.name}
+                    </h4>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-0.5 truncate emp-role">
+                      {emp.role}
+                    </p>
+                    <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#C8F400]/25 text-[#111] emp-badge">
+                      {emp.dept}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: Electricians & Senior Electricians */}
+          <div className="relative w-full overflow-hidden py-3 mt-2">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none marquee-mask-left" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none marquee-mask-right" />
+
+            <div className="animate-marquee-ltr flex gap-5">
+              {[...ELECTRICIANS, ...ELECTRICIANS].map((emp, i) => (
+                <div
+                  key={`${emp.name}-2-${i}`}
+                  className="w-72 shrink-0 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#C8F400] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-4 group emp-card"
+                >
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-md bg-gray-100 group-hover:scale-105 transition-transform duration-300 emp-avatar-box">
+                    <Image
+                      src={emp.avatar}
+                      alt={emp.name}
+                      fill
+                      className="object-cover"
+                      sizes="64px"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="font-bold text-sm text-[#111111] truncate emp-name">
+                      {emp.name}
+                    </h4>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mt-0.5 truncate emp-role">
+                      {emp.role}
+                    </p>
+                    <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#C8F400]/25 text-[#111] emp-badge">
+                      {emp.dept}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
       {/* Stats */}
+
       <section ref={sRef as React.RefObject<HTMLElement>} style={{ background: "#111111" }}>
         <div className="site-container py-14">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">

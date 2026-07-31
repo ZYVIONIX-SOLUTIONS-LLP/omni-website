@@ -606,9 +606,10 @@ export default function ServicesPage() {
         <div className="site-container">
           <FadeUp>
             <div
-              className="relative overflow-hidden rounded-3xl"
-              style={{ background: "#f9fafb" }}
+              className="relative overflow-hidden rounded-3xl bg-[#111111] dark:bg-[#161619] border border-transparent dark:border-gray-800/80 transition-colors duration-300"
             >
+
+
               <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
                 style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "24px 24px" }}
               />

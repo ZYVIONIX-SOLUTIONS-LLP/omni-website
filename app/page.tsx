@@ -222,10 +222,11 @@ export default function Home() {
               borderRadius: "100px",
             }}
           >
-            <span className="text-[0.68rem] font-extrabold uppercase tracking-widest text-[#3b5200] dark:text-[#C8F400] flex items-center gap-2 shrink-0 z-10 brand-notch-title pr-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#527000] dark:bg-[#C8F400] shadow-[0_0_8px_rgba(82,112,0,0.5)] dark:shadow-[0_0_8px_rgba(200,244,0,0.8)]" />
+            <span className="text-[0.68rem] font-black uppercase tracking-widest text-[#111111] dark:text-[#C8F400] flex items-center gap-2 shrink-0 z-10 brand-notch-title pr-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#111111] dark:bg-[#C8F400] shadow-[0_0_6px_rgba(0,0,0,0.3)] dark:shadow-[0_0_8px_rgba(200,244,0,0.8)]" />
               Authorized Dealerships & Partners:
             </span>
+
 
             {/* Marquee ticker moving Left -> Right */}
             <div className="relative w-full overflow-hidden flex items-center">

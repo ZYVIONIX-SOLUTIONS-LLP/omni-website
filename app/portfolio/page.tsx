@@ -290,14 +290,11 @@ function PCard({ p, i, onClick }: { p: Project; i: number; onClick: () => void }
 
       <div className="p-5 flex-1 flex flex-col justify-between">
         <div>
-          <div
-            className="text-[0.7rem] font-bold uppercase tracking-wider mb-1"
-            style={{ color: isDark ? "#9ca3af" : "#9ca3af" }}
-          >{p.cat}</div>
           <h3
             className="text-lg font-bold mb-1.5 transition-colors pcard-title"
             style={{ color: isDark ? "#ffffff" : "#111111" }}
           >{p.title}</h3>
+
           <p
             className="text-xs mb-3 flex items-center gap-1"
             style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
@@ -439,17 +436,8 @@ export default function PortfolioPage() {
                   </div>
                   {/* Bottom text overlay */}
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "2rem 1.75rem 1.75rem" }}>
-                    <div style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: "#C8F400",
-                      marginBottom: "0.4rem",
-                    }}>
-                      {activeProject.cat}
-                    </div>
                     <h2 style={{
+
                       color: "#fff",
                       fontFamily: "var(--font-outfit),system-ui,sans-serif",
                       fontWeight: 800,
@@ -633,7 +621,8 @@ export default function PortfolioPage() {
                       Key Highlights
                     </div>
                     <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", padding: 0, margin: 0, listStyle: "none" }}>
-                      {activeProject.highlights.map((h) => (
+                      {activeProject.highlights.slice(0, 5).map((h) => (
+
                         <li
                           key={h}
                           style={{
@@ -671,42 +660,9 @@ export default function PortfolioPage() {
                       ))}
                     </ul>
                   </div>
-
-                  {/* CTA */}
-                  <div style={{ paddingTop: "1rem", borderTop: `1px solid ${isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)"}` }}>
-                    <Link
-                      href="/contact"
-                      style={{
-                        width: "100%",
-                        justifyContent: "center",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.5rem",
-                        padding: "0.85rem 1.5rem",
-                        borderRadius: "14px",
-                        fontWeight: 700,
-                        fontSize: "0.9rem",
-                        color: "#111111",
-                        background: "linear-gradient(135deg, #d8fd24 0%, #9cb800 100%)",
-                        borderTop: "1.5px solid rgba(255, 255, 255, 0.9)",
-                        borderLeft: "1.5px solid rgba(255, 255, 255, 0.7)",
-                        borderBottom: "1.5px solid rgba(100, 120, 0, 0.7)",
-                        borderRight: "1.5px solid rgba(120, 140, 0, 0.6)",
-                        boxShadow:
-                          "inset 2px 2px 4px rgba(255, 255, 255, 0.8), inset -2px -2px 4px rgba(0, 0, 0, 0.2), 0 6px 18px rgba(200, 244, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.1)",
-                        textDecoration: "none",
-                        transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                      }}
-                      onClick={() => setActiveProject(null)}
-                    >
-                      Discuss a Similar Project
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ filter: "drop-shadow(0px 1px 1px rgba(0,0,0,0.2))" }}>
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </div>
                 </div>
               </div>
+
             </motion.div>
           </>
         )}
