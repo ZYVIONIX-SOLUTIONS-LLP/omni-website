@@ -282,7 +282,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-3 sm:gap-5">
               {SERVICES.map((s, i) => (
                 <FadeUp key={s.title} delay={0.06 + i * 0.07}>
-                  <div className="service-card h-full group">
+                  <Link href="/services" className="service-card h-full group block">
                     <div className="icon-wrap mb-2.5 sm:mb-4">
                       <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-700 ease-out group-hover:rotate-[360deg]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s.icon} />
@@ -290,7 +290,7 @@ export default function Home() {
                     </div>
                     <p className="card-title text-[13px] sm:text-base font-bold tracking-tight mb-1 sm:mb-1.5 leading-snug">{s.title}</p>
                     <p className="text-[11px] sm:text-xs leading-normal sm:leading-relaxed text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
-                  </div>
+                  </Link>
                 </FadeUp>
               ))}
             </div>
