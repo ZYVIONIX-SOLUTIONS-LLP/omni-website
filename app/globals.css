@@ -176,8 +176,8 @@ body {
 }
 
 [data-theme="dark"] .emp-badge {
-  background-color: rgba(200, 244, 0, 0.25) !important;
-  color: #C8F400 !important;
+  background-color: #f3fcd0 !important;
+  color: #111111 !important;
 }
 
 [data-theme="dark"] .marquee-mask-left {
@@ -444,7 +444,13 @@ body[data-theme="dark"] .brand-notch-title {
 }
 
 [data-theme="dark"] .be-badge {
-  background-color: #1a1a1a !important;
+  background-color: #111111 !important;
+  color: #C8F400 !important;
+}
+
+[data-theme="dark"] .exp-badge {
+  background-color: #f3fcd0 !important;
+  color: #111111 !important;
 }
 
 [data-theme="dark"] h3.amritlal-name,
