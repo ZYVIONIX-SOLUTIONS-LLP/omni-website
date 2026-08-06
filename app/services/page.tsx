@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTheme } from "@/contexts/ThemeContext";
 
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -221,6 +222,7 @@ const SLIDES = [
 ];
 
 export default function ServicesPage() {
+  const { isDark } = useTheme();
   const [activeService, setActiveService] = useState<Service | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -588,7 +590,7 @@ export default function ServicesPage() {
                     <h3 className="card-title text-xs sm:text-lg font-bold tracking-tight mb-1 sm:mb-2 leading-snug">{s.title}</h3>
                     <p className="text-[11px] sm:text-xs leading-normal sm:leading-relaxed mb-3 sm:mb-6 text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
                   </div>
-                  <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-black dark:text-white group-hover:text-[#b0d900] transition-colors">
+                  <span className={`inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold ${isDark ? "text-white" : "text-black"} group-hover:text-[#b0d900] transition-colors`}>
                     <span>Learn More</span>
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
