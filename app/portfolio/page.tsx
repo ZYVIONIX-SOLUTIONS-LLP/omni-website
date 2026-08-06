@@ -448,7 +448,7 @@ export default function PortfolioPage() {
                     }}>
                       {activeProject.title}
                     </h2>
-                    <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.6)", display: "flex", itemsCenter: "center", gap: "0.35rem" }}>
+                    <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "center", gap: "0.35rem" }}>
                       📍 {activeProject.loc}
                     </p>
                   </div>
