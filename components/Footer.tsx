@@ -37,7 +37,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2.5 mb-5 group w-fit">
               <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center shrink-0 border border-white/10 bg-black logo-shock">
-                <img src="/logo.jpg" alt="Omni Electrics Logo" className="w-full h-full object-cover scale-105" />
+                <img src="/logo.jpg" alt="Omni Electrics Logo" loading="lazy" decoding="async" className="w-full h-full object-cover scale-105" />
               </div>
               <div className="leading-none">
                 <div className="font-extrabold text-sm tracking-tight text-white">Omni Electrics</div>
@@ -69,7 +69,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {QUICK.map(l => (
                 <li key={l.label}>
-                  <Link href={l.href} prefetch={false} className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
+                  <Link href={l.href} className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#C8F400"; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
                   >{l.label}</Link>
@@ -84,7 +84,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {SVCS.map(l => (
                 <li key={l}>
-                  <Link href="/services" prefetch={false} className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
+                  <Link href="/services" className="text-sm transition-colors duration-200" style={{ color: "rgba(255,255,255,0.5)" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#C8F400"; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
                   >{l}</Link>

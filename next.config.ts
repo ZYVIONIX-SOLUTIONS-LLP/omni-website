@@ -7,8 +7,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   allowedDevOrigins: ["10.19.204.237", "localhost:3000", "*.local"],
+  experimental: {
+    optimizePackageImports: ["framer-motion"],
+  },
   images: {
     unoptimized: true,
+    formats: ["image/avif", "image/webp"],
   },
 };
 
