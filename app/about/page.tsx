@@ -127,7 +127,7 @@ const ELECTRICIANS = [
 export default function AboutPage() {
   const sRef = useRef<HTMLElement>(null);
   const sIv  = useInView(sRef as React.RefObject<Element>, { once: true });
-  const [activeAccordion, setActiveAccordion] = useState<number>(0);
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
 
   return (
     <main className="bg-white min-h-screen">
@@ -214,19 +214,19 @@ export default function AboutPage() {
                   title="Our Engineering Assurance" 
                   body="We assure our customers electrical designs based on proven engineering practices adhering strictly to International and Indian (IS/IEC) standards. Execution is centered on safe, sustainable practices with rigorous testing and verification." 
                   isOpen={activeAccordion === 0}
-                  onToggle={() => setActiveAccordion(0)}
+                  onToggle={() => setActiveAccordion(prev => prev === 0 ? null : 0)}
                 />
                 <Accordion 
                   title="Infrastructure & Logistics" 
                   body="With over 7,500 sq ft combined office and godown facilities in Kozhikode, in-house design & estimation software, and dedicated Powerplay project management software, we execute large-scale turnkey contracts with absolute schedule adherence." 
                   isOpen={activeAccordion === 1}
-                  onToggle={() => setActiveAccordion(1)}
+                  onToggle={() => setActiveAccordion(prev => prev === 1 ? null : 1)}
                 />
                 <Accordion 
                   title="Official Brand Dealerships" 
                   body="We hold direct dealership and distribution ties with leading international and Indian electrical manufacturers, including Schneider Electric India, GM Modular, Orient Electric, and Tisva." 
                   isOpen={activeAccordion === 2}
-                  onToggle={() => setActiveAccordion(2)}
+                  onToggle={() => setActiveAccordion(prev => prev === 2 ? null : 2)}
                 />
               </FadeUp>
               <FadeUp delay={0.15}>

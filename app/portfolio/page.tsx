@@ -65,7 +65,7 @@ const PROJECTS: Project[] = [
     title: "Taj Hotel",
     cat: "Hospitality & Healthcare",
     loc: "Padinharathara, Wayanad",
-    value: "₹6.0 Crore (600 Lakhs)",
+    value: "₹6.0 Crore",
     status: "Completed",
     year: "2022",
     client: "Taj Hotels & Resorts",
@@ -86,7 +86,7 @@ const PROJECTS: Project[] = [
     title: "Aster Mims Hospital",
     cat: "Hospitality & Healthcare",
     loc: "Kasaragod",
-    value: "₹7.0 Crore (700 Lakhs)",
+    value: "₹7.0 Crore",
     status: "Completed",
     year: "2021",
     client: "Aster DM Healthcare",
@@ -107,7 +107,7 @@ const PROJECTS: Project[] = [
     title: "IBNI Spa Resorts",
     cat: "Hospitality & Healthcare",
     loc: "Madikeri, Karnataka",
-    value: "₹4.0 Crore (400 Lakhs)",
+    value: "₹4.0 Crore",
     status: "Completed",
     year: "2020",
     client: "IBNI Hospitality Pvt. Ltd.",
@@ -128,7 +128,7 @@ const PROJECTS: Project[] = [
     title: "Khaleej Block — Aster Mims",
     cat: "Hospitality & Healthcare",
     loc: "Kozhikode",
-    value: "₹1.1 Crore (110 Lakhs)",
+    value: "₹1.1 Crore",
     status: "Completed",
     year: "2023",
     client: "Aster DM Healthcare",
@@ -149,7 +149,7 @@ const PROJECTS: Project[] = [
     title: "Aster Mims Refurbishment",
     cat: "Hospitality & Healthcare",
     loc: "Kozhikode",
-    value: "₹1.6 Crore (160 Lakhs)",
+    value: "₹1.6 Crore",
     status: "Completed",
     year: "2024",
     client: "Aster DM Healthcare",
@@ -372,41 +372,74 @@ export default function PortfolioPage() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "1.25rem",
+                padding: "0.75rem",
                 pointerEvents: "none",
               }}
             >
               <div
                 style={{
                   pointerEvents: "all",
-                  width: "100%",
-                  maxWidth: "900px",
-                  maxHeight: "90vh",
-                  borderRadius: "28px",
-                  overflow: "hidden",
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
                   background: isDark ? "#141416" : "#ffffff",
                   border: isDark ? "1px solid rgba(255,255,255,0.14)" : "1px solid rgba(0,0,0,0.12)",
                   boxShadow: isDark
                     ? "0 35px 90px -15px rgba(0,0,0,0.8), inset 1px 1px 2px rgba(255,255,255,0.1)"
                     : "0 35px 90px -15px rgba(0,0,0,0.35), inset 1.5px 1.5px 3px rgba(255,255,255,1)",
                 }}
-                className="project-modal"
+                className="project-modal relative w-full max-w-[900px] max-h-[88vh] sm:max-h-[90vh] rounded-[24px] sm:rounded-[28px] overflow-y-auto md:overflow-hidden grid grid-cols-1 md:grid-cols-2"
               >
-                {/* LEFT — Image panel */}
-                <div style={{ position: "relative", minHeight: "440px", background: "#0a0a0a", flexShrink: 0 }}>
+                {/* Floating Close Button */}
+                <button
+                  onClick={() => setActiveProject(null)}
+                  style={{
+                    background: isDark ? "rgba(20, 20, 22, 0.75)" : "rgba(255, 255, 255, 0.85)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    borderTop: `1.5px solid ${isDark ? "rgba(255,255,255,0.2)" : "#ffffff"}`,
+                    borderLeft: `1.5px solid ${isDark ? "rgba(255,255,255,0.15)" : "rgba(255, 255, 255, 0.9)"}`,
+                    borderBottom: `1.5px solid ${isDark ? "rgba(0,0,0,0.8)" : "rgba(160, 165, 180, 0.45)"}`,
+                    borderRight: `1.5px solid ${isDark ? "rgba(0,0,0,0.6)" : "rgba(180, 185, 200, 0.35)"}`,
+                    boxShadow:
+                      isDark
+                        ? "inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.1), inset -2px -2px 4px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.4)"
+                        : "inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.95), inset -2px -2px 4px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.15)",
+                  }}
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-105"
+                  aria-label="Close"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={isDark ? "#ccc" : "#111"} strokeWidth="2.5" strokeLinecap="round" style={{ filter: "drop-shadow(0px 1px 1px rgba(0,0,0,0.15))" }}>
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* TOP (Mobile) / LEFT (Desktop) — Image panel */}
+                <div className="relative h-[240px] sm:h-[290px] md:h-full md:min-h-[440px] bg-[#0a0a0a] shrink-0 w-full">
                   <Image
                     src={activeProject.src}
                     alt={activeProject.title}
                     fill
                     className="object-cover"
-                    sizes="450px"
+                    sizes="(max-width: 768px) 100vw, 450px"
                   />
                   {/* Dark gradient overlay */}
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)" }} />
+                  
+                  {/* Value badge */}
+                  <div style={{ position: "absolute", top: "1rem", left: "1rem" }} className="z-10">
+                    <span style={{
+                      fontSize: "0.65rem",
+                      fontWeight: 800,
+                      background: "#C8F400",
+                      color: "#111",
+                      padding: "0.3rem 0.75rem",
+                      borderRadius: "100px",
+                      textTransform: "uppercase",
+                    }}>
+                      {activeProject.value}
+                    </span>
+                  </div>
+
                   {/* Status badge */}
-                  <div style={{ position: "absolute", top: "1.25rem", right: "1.25rem" }}>
+                  <div style={{ position: "absolute", top: "1rem", right: "3.25rem" }} className="z-10 sm:right-[3.5rem]">
                     <span style={{
                       fontSize: "0.65rem",
                       fontWeight: 700,
@@ -420,83 +453,33 @@ export default function PortfolioPage() {
                       {activeProject.status}
                     </span>
                   </div>
-                  {/* Value badge */}
-                  <div style={{ position: "absolute", top: "1.25rem", left: "1.25rem" }}>
-                    <span style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 800,
-                      background: "#C8F400",
-                      color: "#111",
-                      padding: "0.3rem 0.75rem",
-                      borderRadius: "100px",
-                      textTransform: "uppercase",
-                    }}>
-                      {activeProject.value}
-                    </span>
-                  </div>
-                  {/* Bottom text overlay */}
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "2rem 1.75rem 1.75rem" }}>
-                    <h2 style={{
 
+                  {/* Bottom text overlay inside image */}
+                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} className="p-4 sm:p-7">
+                    <h2 style={{
                       color: "#fff",
                       fontFamily: "var(--font-outfit),system-ui,sans-serif",
                       fontWeight: 800,
-                      fontSize: "clamp(1.2rem,2.5vw,1.65rem)",
+                      fontSize: "clamp(1.15rem, 2.5vw, 1.65rem)",
                       letterSpacing: "-0.03em",
                       lineHeight: 1.15,
-                      marginBottom: "0.5rem",
+                      marginBottom: "0.35rem",
                     }}>
                       {activeProject.title}
                     </h2>
-                    <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "center", gap: "0.35rem" }}>
+                    <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", gap: "0.35rem", margin: 0 }}>
                       📍 {activeProject.loc}
                     </p>
                   </div>
                 </div>
 
-                {/* RIGHT — Details panel */}
-                <div style={{
-                  padding: "2rem 1.75rem",
-                  overflowY: "auto",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.1rem",
-                  background: isDark ? "#111" : "#ffffff",
-                }}>
-                  {/* Close button */}
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <button
-                      onClick={() => setActiveProject(null)}
-                      style={{
-                        width: "2.35rem",
-                        height: "2.35rem",
-                        borderRadius: "50%",
-                        background: isDark ? "#1c1c1e" : "#f5f5f7",
-                        borderTop: `1.5px solid ${isDark ? "rgba(255,255,255,0.2)" : "#ffffff"}`,
-                        borderLeft: `1.5px solid ${isDark ? "rgba(255,255,255,0.15)" : "rgba(255, 255, 255, 0.9)"}`,
-                        borderBottom: `1.5px solid ${isDark ? "rgba(0,0,0,0.8)" : "rgba(160, 165, 180, 0.45)"}`,
-                        borderRight: `1.5px solid ${isDark ? "rgba(0,0,0,0.6)" : "rgba(180, 185, 200, 0.35)"}`,
-                        boxShadow:
-                          isDark
-                            ? "inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.1), inset -2px -2px 4px rgba(0, 0, 0, 0.5), 3px 6px 16px rgba(0, 0, 0, 0.5)"
-                            : "inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.95), inset -2px -2px 4px rgba(0, 0, 0, 0.15), 3px 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                        transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
-                      }}
-                      aria-label="Close"
-                      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.06)")}
-                      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                    >
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={isDark ? "#ccc" : "#111"} strokeWidth="2.5" strokeLinecap="round" style={{ filter: "drop-shadow(0px 1px 1px rgba(0,0,0,0.15))" }}>
-                        <path d="M18 6L6 18M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </div>
-
+                {/* BOTTOM (Mobile) / RIGHT (Desktop) — Details panel */}
+                <div
+                  style={{
+                    background: isDark ? "#111" : "#ffffff",
+                  }}
+                  className="p-5 sm:p-7 overflow-y-visible md:overflow-y-auto flex flex-col gap-4 relative"
+                >
                   {/* Meta pills */}
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                     {activeProject.client && (
