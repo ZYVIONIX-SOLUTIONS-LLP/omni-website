@@ -571,26 +571,26 @@ export default function ServicesPage() {
       {/* ═══ SERVICES GRID ══════════════════════════════ */}
       <section className="section-y bg-white">
         <div className="site-container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {SERVICES.map((s, i) => (
               <FadeUp key={s.title} delay={i * 0.06}>
                 <button
                   onClick={() => setActiveService(s)}
-                  className="service-card group h-full w-full text-left"
+                  className="service-card group h-full w-full text-left p-3.5 sm:p-7.5 flex flex-col justify-between"
                   style={{ border: "none", cursor: "pointer" }}
                 >
                   <div>
-                    <div className="icon-wrap mb-5">
-                      <svg className="transition-transform duration-700 ease-out group-hover:rotate-[360deg]" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <div className="icon-wrap mb-3 sm:mb-5">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-700 ease-out group-hover:rotate-[360deg]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s.icon} />
                       </svg>
                     </div>
-                    <h3 className="card-title text-lg font-bold tracking-tight mb-2">{s.title}</h3>
-                    <p className="text-xs leading-relaxed mb-6 text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
+                    <h3 className="card-title text-xs sm:text-lg font-bold tracking-tight mb-1 sm:mb-2 leading-snug">{s.title}</h3>
+                    <p className="text-[11px] sm:text-xs leading-normal sm:leading-relaxed mb-3 sm:mb-6 text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-black dark:text-white group-hover:text-[#b0d900] transition-colors">
+                  <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-black dark:text-white group-hover:text-[#b0d900] transition-colors">
                     <span>Learn More</span>
-                    <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </span>

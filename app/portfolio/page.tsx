@@ -274,35 +274,35 @@ function PCard({ p, i, onClick }: { p: Project; i: number; onClick: () => void }
         cursor: "pointer",
       }}
     >
-      <div className="relative w-full h-48 overflow-hidden bg-gray-900">
-        <Image src={p.src} alt={p.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100" sizes="(max-width: 768px) 100vw, 33vw" />
-        <div className="absolute top-3 right-3 z-10 flex gap-2">
-          <span className="text-[0.7rem] font-bold px-2.5 py-1 rounded-full bg-[#111111]/80 text-[#C8F400] backdrop-blur-md border border-white/10">
+      <div className="relative w-full h-32 sm:h-48 overflow-hidden bg-gray-900">
+        <Image src={p.src} alt={p.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100" sizes="(max-width: 768px) 50vw, 33vw" />
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 flex gap-2">
+          <span className="text-[0.55rem] sm:text-[0.7rem] font-bold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-[#111111]/80 text-[#C8F400] backdrop-blur-md border border-white/10">
             {p.status}
           </span>
         </div>
-        <div className="absolute top-3 left-3 z-10">
-          <span className="text-[0.65rem] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#C8F400] text-[#111111]">
+        <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
+          <span className="text-[0.55rem] sm:text-[0.65rem] font-extrabold uppercase px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-[#C8F400] text-[#111111]">
             {p.value}
           </span>
         </div>
       </div>
 
-      <div className="p-5 flex-1 flex flex-col justify-between">
+      <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
           <h3
-            className="text-lg font-bold mb-1.5 transition-colors pcard-title"
+            className="text-xs sm:text-lg font-bold mb-1 sm:mb-1.5 transition-colors pcard-title leading-snug"
             style={{ color: isDark ? "#ffffff" : "#111111" }}
           >{p.title}</h3>
 
           <p
-            className="text-xs mb-3 flex items-center gap-1"
+            className="text-[10px] sm:text-xs mb-2 sm:mb-3 flex items-center gap-1"
             style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
           >
             📍 <span>{p.loc}</span>
           </p>
           <p
-            className="text-xs leading-relaxed pt-3 border-t pcard-scope"
+            className="text-[11px] sm:text-xs leading-relaxed pt-2 sm:pt-3 border-t pcard-scope line-clamp-2 sm:line-clamp-none"
             style={{
               color: isDark ? "#d1d5db" : "#4b5563",
               borderColor: isDark ? "#2a2a2a" : "#f3f4f6",
@@ -717,7 +717,7 @@ export default function PortfolioPage() {
               <button key={c} onClick={() => setActive(c)} className={`ftab ${active === c ? "active" : ""}`}>{c}</button>
             ))}
           </div>
-          <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div layout className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             <AnimatePresence mode="popLayout">
               {filtered.map((p, i) => (
                 <PCard key={p.id} p={p} i={i} onClick={() => setActiveProject(p)} />

@@ -111,26 +111,34 @@ export default function ContactPage() {
       <section className="section-y bg-white">
         <div className="site-container">
           <FadeUp>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
               {INFO.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="service-card flex flex-col items-center text-center p-6 h-full group"
+                  className="service-card flex flex-col items-center text-center p-3.5 sm:p-6 h-full group"
                 >
                   <div
-                    className="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-[#C8F400] group-hover:scale-110 group-hover:rotate-[360deg]"
+                    className="icon-wrap w-9 h-9 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2.5 sm:mb-4 transition-all duration-500 group-hover:bg-[#C8F400] group-hover:scale-110 group-hover:rotate-[360deg]"
                     style={{ background: "#f3f4f6" }}
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d={item.icon} />
                     </svg>
                   </div>
-                  <p className="text-[0.65rem] font-bold uppercase tracking-wider mb-1.5" style={{ color: "#9ca3af" }}>{item.label}</p>
-                  <p className="font-bold text-sm mb-1 leading-snug" style={{ color: "#c3c9d3ff" }}>{item.value}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "#9ca3af" }}>{item.sub}</p>
+                  <p className="text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-wider mb-1" style={{ color: "#9ca3af" }}>{item.label}</p>
+                  <p 
+                    className={`font-bold text-xs sm:text-sm mb-1 leading-snug ${
+                      item.label === "Email Us" ? "truncate max-w-full sm:whitespace-normal" : "break-words sm:break-normal"
+                    }`} 
+                    style={{ color: "#c3c9d3ff" }}
+                    title={item.value}
+                  >
+                    {item.value}
+                  </p>
+                  <p className="text-[10px] sm:text-xs leading-relaxed" style={{ color: "#9ca3af" }}>{item.sub}</p>
                 </a>
               ))}
             </div>

@@ -279,17 +279,17 @@ export default function Home() {
             </FadeUp>
 
             {/* Right responsive grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5">
               {SERVICES.map((s, i) => (
                 <FadeUp key={s.title} delay={0.06 + i * 0.07}>
                   <div className="service-card h-full group">
-                    <div className="icon-wrap mb-4">
-                      <svg className="transition-transform duration-700 ease-out group-hover:rotate-[360deg]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <div className="icon-wrap mb-2.5 sm:mb-4">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-700 ease-out group-hover:rotate-[360deg]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s.icon} />
                       </svg>
                     </div>
-                    <p className="card-title text-base font-bold tracking-tight mb-1.5">{s.title}</p>
-                    <p className="text-xs leading-relaxed text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
+                    <p className="card-title text-[13px] sm:text-base font-bold tracking-tight mb-1 sm:mb-1.5 leading-snug">{s.title}</p>
+                    <p className="text-[11px] sm:text-xs leading-normal sm:leading-relaxed text-[#86868b] dark:text-[#9ca3af]">{s.desc}</p>
                   </div>
                 </FadeUp>
               ))}
@@ -407,7 +407,7 @@ export default function Home() {
           </div>
 
           {/* 2×3 gallery */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
             {[
               { src: "/taj-hotel-wayanad.jpg", title: "Taj Hotel, Wayanad", cat: "₹6.0 Crore (600L)", loc: "Wayanad" },
               { src: "/aster-mims-kasaragod.jpg", title: "Aster Mims Hospital", cat: "₹7.0 Crore (700L)", loc: "Kasaragod" },
@@ -423,20 +423,20 @@ export default function Home() {
                     alt={p.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.07]"
-                    sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
+                    sizes="(max-width:640px) 50vw,(max-width:1024px) 50vw,33vw"
                   />
                   <div
-                    className="absolute inset-0 flex flex-col justify-end p-4"
+                    className="absolute inset-0 flex flex-col justify-end p-2.5 sm:p-4"
                     style={{ background: "linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 60%)" }}
                   >
                     <span
-                      className="text-[0.65rem] font-bold px-2.5 py-0.5 rounded-full w-fit mb-2"
+                      className="text-[0.55rem] sm:text-[0.65rem] font-bold px-2 sm:px-2.5 py-0.5 rounded-full w-fit mb-1 sm:mb-2"
                       style={{ background: "#C8F400", color: "#111111" }}
                     >
                       {p.cat}
                     </span>
-                    <p className="text-white font-bold text-base leading-snug">{p.title}</p>
-                    <p className="text-xs text-white/70 mt-0.5">📍 {p.loc}</p>
+                    <p className="text-white font-bold text-xs sm:text-base leading-snug">{p.title}</p>
+                    <p className="text-[10px] sm:text-xs text-white/70 mt-0.5">📍 {p.loc}</p>
                   </div>
                 </div>
               </FadeUp>

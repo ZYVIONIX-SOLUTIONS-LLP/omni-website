@@ -324,29 +324,29 @@ export default function AboutPage() {
           </FadeUp>
 
           {/* 4 Key Person Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 mt-10">
             {KEY_LEADERSHIP.map((emp, i) => (
               <FadeUp key={emp.name} delay={i * 0.08}>
-                <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200/80 hover:border-[#C8F400] transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 flex flex-col items-center text-center group h-full justify-between relative overflow-hidden emp-card">
-                  <div className="w-full flex justify-end mb-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#C8F400] text-[#111] emp-badge">
+                <div className="p-4 sm:p-6 rounded-3xl bg-gray-50 border border-gray-200/80 hover:border-[#C8F400] transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 flex flex-col items-center text-center group h-full justify-between relative overflow-hidden emp-card">
+                  <div className="w-full flex justify-end mb-1 sm:mb-2">
+                    <span className="px-2 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-[#C8F400] text-[#111] emp-badge">
                       {emp.dept}
                     </span>
                   </div>
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg bg-gray-100 group-hover:scale-105 transition-transform duration-300 emp-avatar-box">
+                  <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden mb-3 sm:mb-4 border-2 sm:border-4 border-white shadow-lg bg-gray-100 group-hover:scale-105 transition-transform duration-300 emp-avatar-box">
                     <Image
                       src={emp.avatar}
                       alt={emp.name}
                       fill
                       className="object-cover"
-                      sizes="96px"
+                      sizes="(max-width: 640px) 64px, 96px"
                     />
                   </div>
                   <div className="w-full">
-                    <h3 className="font-extrabold text-base text-[#111111] mb-1 transition-colors emp-name">
+                    <h3 className="font-extrabold text-xs sm:text-base text-[#111111] mb-0.5 sm:mb-1 transition-colors emp-name leading-snug">
                       {emp.name}
                     </h3>
-                    <p className="text-xs font-bold uppercase tracking-wider text-gray-500 emp-role">
+                    <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-500 emp-role">
                       {emp.role}
                     </p>
                   </div>
@@ -463,7 +463,7 @@ export default function AboutPage() {
             <div className="overline mb-4 justify-center">Why Choose Omni Electrics</div>
             <h2 className="section-heading">Our Core Strengths & Infrastructure</h2>
           </FadeUp>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {STRENGTHS.map((v, i) => (
               <FadeUp key={v.title} delay={i * 0.08}>
                 <div className="service-card text-center group h-full flex flex-col justify-between">
